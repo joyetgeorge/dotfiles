@@ -1,18 +1,17 @@
 return {
-  {
-    "ggandor/leap.nvim",
-    enabled = true,
-    keys = {
-      { "s", mode = { "n", "x", "o" }, desc = "Leap Forward to" },
-      { "S", mode = { "n", "x", "o" }, desc = "Leap Backward to" },
-      { "gs", mode = { "n", "x", "o" }, desc = "Leap from Windows" },
-    },
-    config = function(_, opts)
-      local leap = require "leap"
-      leap.add_default_mappings(true)
-    end,
-  },
-
+  -- {
+  --   "ggandor/leap.nvim",
+  --   enabled = true,
+  --   keys = {
+  --     { "s", mode = { "n", "x", "o" }, desc = "Leap Forward to" },
+  --     { "S", mode = { "n", "x", "o" }, desc = "Leap Backward to" },
+  --     { "gs", mode = { "n", "x", "o" }, desc = "Leap from Windows" },
+  --   },
+  --   config = function(_, opts)
+  --     local leap = require "leap"
+  --     leap.add_default_mappings(true)
+  --   end,
+  -- },
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
