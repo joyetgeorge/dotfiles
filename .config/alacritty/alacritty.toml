@@ -8,4 +8,8 @@ option_as_alt = 'Both'
 
 [font]
 normal.family = "JetBrainsMono Nerd Font"
-size = 13.5
+size = 13.8
+
+[shell]
+program = "/bin/zsh"
+args = ["-l", "-c", "source ~/.zshrc; tmux attach 2> /dev/null || tmux"]
