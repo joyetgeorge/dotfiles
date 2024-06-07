@@ -39,3 +39,14 @@ vim.schedule(function()
 end)
 
 vim.opt.relativenumber = true
+
+local wilder = require "wilder"
+wilder.setup { modes = { ":", "/", "?" } }
+
+require("oil").setup {
+  preview = {
+    win_options = {
+      winhl = "Normal:Normal,Float:Float",
+    },
+  },
+}
