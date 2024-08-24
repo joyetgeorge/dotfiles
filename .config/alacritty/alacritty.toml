@@ -26,7 +26,7 @@ history = 1
 
 # Colors - https://github.com/olimorris/onedarkpro.nvim
 [colors.primary]
-background= '#282c34'
+background= '#111317'
 foreground= '#abb2bf'
 
 [colors.normal]
