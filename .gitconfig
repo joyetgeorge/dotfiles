@@ -1,0 +1,35 @@
+[user]
+	name = Joyet George
+	email = joyetgeorge@gamil.com
+
+[diff]
+    tool = delta
+
+[delta]
+	dark = true
+	features = hoopoe
+
+[delta "hoopoe"]
+    # author: https://github.com/dandavison
+    light = true
+    pink = "#380000"
+    dark-pink = "#94382D"
+    green = "#003826"
+    dark-green = "#0E8F55"
+    dark-green-2 = "#3A6444"
+    minus-style = normal hoopoe.pink
+    minus-emph-style = normal hoopoe.dark-pink
+    minus-non-emph-style = minus-style
+    plus-style = syntax hoopoe.green
+    plus-emph-style = syntax hoopoe.dark-green
+    plus-non-emph-style = plus-style
+    minus-empty-line-marker-style = minus-style
+    plus-empty-line-marker-style = plus-style
+    commit-decoration-style = blue ol
+    commit-style = raw
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = "#C5574C"
+    hunk-header-line-number-style = hoopoe.dark-green-2
+    hunk-header-style = file line-number syntax
+    syntax-theme = GitHub
+    zero-style = syntax

@@ -1,4 +1,4 @@
 return {
-  "f-person/git-blame.nvim",
+  "nvim-tree/nvim-web-devicons",
   event = "VeryLazy",
 }
