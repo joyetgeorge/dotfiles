@@ -4,14 +4,13 @@ gui:
       - "#6397a9"
       - bold
     inactiveBorderColor:
-      - "#152528"
+      - "#254147"
     selectedLineBgColor:
       - "#254147"
 
   nerdFontsVersion: "3"
   showBottomLine: false
   expandFocusedSidePanel: true
-  windowSize: "half"
   authorColors: 
     '*': '#b294bb'
 
