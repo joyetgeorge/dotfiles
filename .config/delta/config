@@ -1,0 +1,12 @@
+[delta]
+syntax-theme = "OneDarkPro"
+side-by-side = true  # Optional: Enable side-by-side view
+line-numbers = true  # Optional: Show line numbers
+
+[delta "OneDarkPro"]
+minus-style = "normal #ff6c6b"    # Change color for deletions
+minus-emph-style = "normal #ff6c6b"
+plus-style = "normal #98c379"     # Change color for additions
+plus-emph-style = "normal #98c379"
+syntax-theme = "OneDarkPro"
+

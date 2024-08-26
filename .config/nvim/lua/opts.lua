@@ -15,3 +15,4 @@ vim.opt.scrolloff = 10
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
+vim.opt.relativenumber = true

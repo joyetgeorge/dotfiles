@@ -1,6 +1,8 @@
 require('dropbar').setup {}
 
 require('oil').setup {
+  show_hidden = true,
+  delete_to_trash = true,
   preview = {
     win_options = {
       winhl = 'Normal:Normal,Float:Float',
