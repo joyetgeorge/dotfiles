@@ -1,75 +1,52 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = true
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+vim.g.mapleader = " "
 
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+if not vim.loop.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+end
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-  if vim.v.shell_error ~= 0 then
-    error('Error cloning lazy.nvim:\n' .. out)
-  end
-end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup {
+local lazy_config = require "configs.lazy"
+
+-- load plugins
+require("lazy").setup({
   {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-  { import = 'custom.plugins' },
-}
-
-require 'mappings'
-require 'setup'
-require 'opts'
-
-vim.cmd.colorscheme 'terafox'
-
-vim.o.laststatus = 3
-
-vim.g.gitblame_highlight_group = 'GitBlameLine'
-
-vim.cmd [[
-  highlight TelescopeBorder guifg=#254147 guibg=#152528
-  highlight TelescopePromptBorder guifg=#254147 guibg=#152528
-  highlight TelescopeResultsBorder guifg=#254147 guibg=#152528
-  highlight TelescopePreviewBorder guifg=#254147 guibg=#152528
-  highlight GitBlameLine guifg=#152528 guibg=#254147
-]]
-
-vim.diagnostic.config {
-  virtual_text = {
-    prefix = ' ●',
-    spacing = 2,
-    format = function(diagnostic)
-      return string.format('%s: %s ', diagnostic.severity, diagnostic.message)
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+    config = function()
+      require "options"
     end,
   },
-  signs = true,
-  update_in_insert = false,
-  severity_sort = true,
+
+  { import = "plugins" },
+}, lazy_config)
+
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
+
+require "nvchad.autocmds"
+
+vim.schedule(function()
+  require "mappings"
+end)
+
+vim.opt.relativenumber = true
+
+local wilder = require "wilder"
+wilder.setup { modes = { ":", "/", "?" } }
+
+require("oil").setup {
+  preview = {
+    win_options = {
+      winhl = "Normal:Normal,Float:Float",
+    },
+  },
 }
-
-vim.g.lazygit_floating_window_border_chars = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
---vim.g.lazygit_floating_window_use_plenary = 1
-
-vim.api.nvim_set_hl(0, 'LazyGitBorder', { fg = '#254147', bg = 'NONE' })

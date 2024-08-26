@@ -1,23 +1,31 @@
 gui:
   theme:
     activeBorderColor:
-      - "#6397a9"
+      - "#a6d189"
       - bold
     inactiveBorderColor:
-      - "#152528"
+      - "#a5adce"
+    optionsTextColor:
+      - "#8caaee"
     selectedLineBgColor:
-      - "#254147"
+      - "#414559"
+    cherryPickedCommitBgColor:
+      - "#51576d"
+    cherryPickedCommitFgColor:
+      - "#a6d189"
+    unstagedChangesColor:
+      - "#e78284"
+    defaultFgColor:
+      - "#c6d0f5"
+    searchingActiveBorderColor:
+      - "#e5c890"
 
-  nerdFontsVersion: "3"
+  authorColors:
+    "*": "#babbf1"
+
   showBottomLine: false
-  expandFocusedSidePanel: true
-  windowSize: "half"
-  authorColors: 
-    '*': '#b294bb'
 
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never --syntax-theme base16-256 -s
-  commit:
-    signOff: true
