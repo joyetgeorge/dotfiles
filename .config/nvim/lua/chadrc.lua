@@ -4,23 +4,31 @@
 
 ---@type ChadrcConfig
 local M = {
-  ui = {
-    statusline = {
-      theme = "minimal",
-      separator_style = "arrow",
-      order = nil,
-      modules = nil,
-    },
-    cmp = {
-      enabled = true,
-      icons = true,
-      style = "atom_colored",
-    },
-  },
+	ui = {
+		statusline = {
+			theme = "minimal",
+			separator_style = "arrow",
+			order = nil,
+			modules = nil,
+		},
+		cmp = {
+			enabled = true,
+			icons = true,
+			style = "atom_colored",
+		},
+	},
+	nvdash = {
+		enabled = true,
+		load_on_startup = true,
+		header = {
+			"ネオヴィム :: neovim",
+		},
+    buttons = {}
+	},
 }
 
 M.base46 = {
-  theme = "onedark",
+	theme = "onedark",
 }
 
 return M
