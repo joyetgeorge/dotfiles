@@ -10,7 +10,6 @@
 	features = hoopoe
 
 [delta "hoopoe"]
-    # author: https://github.com/dandavison
     light = true
     pink = "#380000"
     dark-pink = "#94382D"
