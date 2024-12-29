@@ -1,0 +1,10 @@
+background = #1e222a
+foreground = ffffff
+font-size = 14.1
+macos-titlebar-style = hidden
+macos-non-native-fullscreen = true
+window-padding-x = 10
+window-padding-y = 10,3
+command=/opt/homebrew/bin/tmux
+
+mouse-hide-while-type = true

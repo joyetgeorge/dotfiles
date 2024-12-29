@@ -26,3 +26,8 @@ vim.api.nvim_set_keymap('i', '<M-BS>', '<C-w>', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('c', '<M-BS>', '<C-w>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('!', '<M-BS>', '<C-w>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<D-BS>', '<Esc>ddi', { noremap = true, silent = true })
+
+vim.keymap.set("n", '<leader>w', function()
+  vim.cmd("vsplit | wincmd l")
+  require("oil").open()
+end)
