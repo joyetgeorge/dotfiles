@@ -1,80 +1,84 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = true
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+vim.g.mapleader = " "
+
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+end
+
+vim.opt.rtp:prepend(lazypath)
+
+local lazy_config = require "configs.lazy"
+
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
+
+  { import = "plugins" },
+}, lazy_config)
+
+require("oil").setup {
+  win_options = {
+    signcolumn = "yes:1",
+  },
+}
+
+require("oil-git-status").setup {
+  show_ignored = true,
+}
+
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
+
+require "options"
+require "nvchad.autocmds"
 
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+  require "mappings"
 end)
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+local wilder = require "wilder"
+wilder.setup { modes = { ":", "/", "?" } }
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", {}),
+  desc = "Hightlight selection on yank",
+  pattern = "*",
   callback = function()
-    vim.highlight.on_yank()
+    vim.highlight.on_yank { higroup = "Cursor", timeout = 100 }
   end,
 })
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-  if vim.v.shell_error ~= 0 then
-    error('Error cloning lazy.nvim:\n' .. out)
-  end
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup {
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-  {
-    'folke/todo-comments.nvim',
-    event = 'VimEnter',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false },
-  },
-  { import = 'custom.plugins' },
+require("treesitter-context").setup {
+  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+  multiwindow = false, -- Enable multiwindow support.
+  max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+  min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  line_numbers = true,
+  multiline_threshold = 20, -- Maximum number of lines to show for a single context
+  trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+  mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
+  -- Separator between context and content. Should be a single character string, like '-'.
+  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  separator = nil,
+  zindex = 20, -- The Z-index of the context window
+  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
-require 'mappings'
-require 'setup'
-require 'opts'
-
-vim.cmd.colorscheme 'terafox'
-
-vim.o.laststatus = 3
-
-vim.g.gitblame_highlight_group = 'GitBlameLine'
-
-vim.cmd [[
-  highlight TelescopeBorder guifg=#254147 guibg=#152528
-  highlight TelescopePromptBorder guifg=#254147 guibg=#152528
-  highlight TelescopeResultsBorder guifg=#254147 guibg=#152528
-  highlight TelescopePreviewBorder guifg=#254147 guibg=#152528
-  highlight GitBlameLine guifg=#152528 guibg=#254147
-]]
-
-vim.diagnostic.config {
-  virtual_text = {
-    prefix = ' ●',
-    spacing = 2,
-    format = function(diagnostic)
-      return string.format('%s: %s ', diagnostic.severity, diagnostic.message)
-    end,
-  },
-  signs = true,
-  update_in_insert = false,
-  severity_sort = true,
-}
-
-vim.g.lazygit_floating_window_border_chars = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
---vim.g.lazygit_floating_window_use_plenary = 1
-
-vim.api.nvim_set_hl(0, 'LazyGitBorder', { fg = '#254147', bg = 'NONE' })
+-- Highlight JavaScript and TypeScript variables with a custom color
+vim.api.nvim_set_hl(0, "@variable", { fg = "#e3c37e" })  -- For general variables (JavaScript, TypeScript, etc.)
+vim.api.nvim_set_hl(0, "@variable.tsx", { fg = "#e3c37e" })  -- Specifically for .tsx files
+vim.api.nvim_set_hl(0, "@tag.builtin.tsx", { fg = "#de6b74" })
+-- vim.api.nvim_set_hl(0, "@variable.member.tsx", { fg = "#d19a66" })  -- Custom color for .tsx variable members
+-- vim.api.nvim_set_hl(0, "@variable.member", { fg = "#d19a66" })  -- Custom color for general variable members
+vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { fg = "#d19a66" })  -- Custom color for .tsx tag attributes
+-- vim.api.nvim_set_hl(0, "@tag.attribute", { fg = "#d19a66" })
