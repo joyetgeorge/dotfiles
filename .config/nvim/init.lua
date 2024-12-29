@@ -99,3 +99,14 @@ vim.api.nvim_set_hl(0, "@tag.builtin.tsx", { fg = "#de6b74" })
 -- vim.api.nvim_set_hl(0, "@variable.member", { fg = "#d19a66" })  -- Custom color for general variable members
 vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { fg = "#d19a66" }) -- Custom color for .tsx tag attributes
 -- vim.api.nvim_set_hl(0, "@tag.attribute", { fg = "#d19a66" })
+
+local hl_groups = { 'DiagnosticUnderlineError', 'DiagnosticUnderlineWarn' }
+for _, hl in ipairs(hl_groups) do
+  vim.cmd.highlight(hl .. ' gui=undercurl')
+end
+
+vim.api.nvim_set_hl(0, "@class", { fg = "#de6b74" })  -- Tree-sitter class highlight
+vim.api.nvim_set_hl(0, "@type.sass", { fg = "#de6b74" })
+
+vim.api.nvim_set_hl(0, "sassClass", { fg = "#de6b74" })
+

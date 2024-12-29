@@ -20,18 +20,7 @@ local M = {
 }
 
 M.base46 = {
-  theme = "gruvchad",
-  changed_themes = {
-    all = {
-      base_16 = {},
-      base_30 = {}
-    },
-    onedark = {
-      base_30 = {
-        one_bg = "#282c34",
-      },
-    },
-  },
+  theme = "onedark",
 }
 
 return M

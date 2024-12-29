@@ -31,3 +31,14 @@ vim.keymap.set("n", '<leader>w', function()
   vim.cmd("vsplit | wincmd l")
   require("oil").open()
 end)
+
+vim.keymap.set('n', '<leader>sF', function()
+  require('telescope.builtin').spell_suggest(
+    require('telescope.themes').get_cursor({
+      attach_mappings = function(_, map)
+        map({ 'i', 'n' }, '<C-y>', require('telescope.actions').select_default)
+        return true
+      end,
+    })
+  )
+end, { desc = 'Spelling Suggestions' })
