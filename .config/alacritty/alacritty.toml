@@ -1,6 +1,6 @@
 [window]
 padding.x = 10
-padding.y = 10
+padding.y = 0
 
 decorations = 'Buttonless'
 
@@ -8,10 +8,11 @@ option_as_alt = 'Both'
 
 [font]
 normal.family = "JetBrainsMono Nerd Font"
-size = 14.3
-offset.y = 6
+size = 14.4
+offset.y = 5
+offset.x = 1
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 args = ["-l", "-c", "source ~/.zshrc; tmux attach 2> /dev/null || tmux"]
 
@@ -25,7 +26,7 @@ bindings = [
 history = 1
 
 [colors.primary]
-background  = "#152528"
+background  = "#282c34"
 foreground  = "#abb2bf"
 
 [colors.normal]
@@ -55,4 +56,6 @@ cursor      = "CellForeground" # syntax-cursor-color
 [colors.selection]
 text        = "CellForeground"
 background  = "#5c6370"
+
+[terminal]
 

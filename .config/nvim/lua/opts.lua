@@ -16,3 +16,5 @@ vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
 vim.opt.relativenumber = true
+
+vim.api.nvim_set_hl(0, 'NeoTreeDirectoryIcon', { bg = '#1e222a' })

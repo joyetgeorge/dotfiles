@@ -4,10 +4,9 @@ local function pick_dropbar()
   require('dropbar.api').pick()
 end
 
-map('n', ';', ':', { desc = 'CMD enter command mode' })
+map('n', ';', ':Telescope cmdline<CR>', { desc = 'CMD enter command mode' })
 map('i', 'jk', '<ESC>')
 map('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
-map('n', '<leader>e', '<CMD>:NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
 map('n', '<leader>dp', pick_dropbar, { desc = 'Dropbar Pick' })
 map({ 'n', 'x', 'o' }, 's', '<Plug>(leap-forward)')
 map({ 'n', 'x', 'o' }, 'S', '<Plug>(leap-backward)')
@@ -23,3 +22,5 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
