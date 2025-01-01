@@ -70,3 +70,69 @@ require('telescope').setup {
     buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
   },
 }
+
+require('cmp').setup {
+  window = {
+    completion = {
+      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+      col_offset = -3,
+      side_padding = 0,
+    },
+  },
+  formatting = {
+    fields = { 'kind', 'abbr', 'menu' },
+    format = function(entry, vim_item)
+      local kind = require('lspkind').cmp_format { mode = 'symbol_text', maxwidth = 50 }(entry, vim_item)
+      local strings = vim.split(kind.kind, '%s', { trimempty = true })
+      kind.kind = ' ' .. (strings[1] or '') .. ' '
+      kind.menu = ' (' .. (strings[2] or '') .. ')'
+
+      kind.abbr = string.sub(vim_item.abbr, 1, 20)
+
+      return kind
+    end,
+  },
+}
+
+-- MINI STATUSLINE
+
+local blocked_filetypes = {
+  ['man'] = true,
+  ['dashboard'] = true,
+  ['leetcode.nvim'] = true,
+}
+
+local MiniStatusline = require 'mini.statusline'
+
+require('mini.statusline').setup {
+  content = {
+    active = function()
+      local diag_signs = {
+        ERROR = '%#DiagnosticError#󰄯 %#MiniStatuslineDevinfo#',
+        WARN = '%#DiagnosticWarn#󰄯 %#MiniStatuslineDevinfo#',
+        INFO = '%#DiagnosticInfo#󰄯 %#MiniStatuslineDevinfo#',
+        HINT = '%#DiagnosticHint#󰄯 %#MiniStatuslineDevinfo#',
+      }
+      if blocked_filetypes[vim.bo.filetype] then
+        vim.cmd 'highlight StatusLine guibg=NONE guifg=NONE'
+        return ''
+      end
+      local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 75 }
+      local git = MiniStatusline.section_git { trunc_width = 75 }
+      local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75, signs = diag_signs }
+      local filename = MiniStatusline.section_filename { trunc_width = 120 }
+      local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
+      local search = MiniStatusline.section_searchcount { trunc_width = 75 }
+      return MiniStatusline.combine_groups {
+        { hl = mode_hl, strings = { mode } },
+        { hl = 'MiniStatuslineDevinfo', strings = { git, diagnostics } },
+        '%<', -- Mark general truncate point
+        { hl = 'MiniStatuslineFilename', strings = { filename } },
+        '%=', -- End left alignment
+        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+        { hl = mode_hl, strings = { search } },
+      }
+    end,
+  },
+  use_icons = true,
+}
