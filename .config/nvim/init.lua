@@ -40,11 +40,21 @@ require("oil").setup({
 	watch_for_changes = true,
 	view_options = {
 		-- show_hidden = true,
+    dir_limit = {
+      enabled = true,
+      root = vim.fn.getcwd(), -- Set the initial root to the current working directory
+    },
 	},
+  float = {
+    -- padding = 3,
+    get_win_title = nil,
+    preview_split = "right",
+  },
 	keymaps = {
 		["gd"] = function()
 			require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
 		end,
+    ["<C-h>"] = "open_parent",
 	},
 })
 
@@ -109,4 +119,29 @@ vim.api.nvim_set_hl(0, "@class", { fg = "#de6b74" })  -- Tree-sitter class highl
 vim.api.nvim_set_hl(0, "@type.sass", { fg = "#de6b74" })
 
 vim.api.nvim_set_hl(0, "sassClass", { fg = "#de6b74" })
+
+vim.o.guifont = "JetBrainsMono Nerd Font"
+
+-- require("telescope").setup {
+--   extensions = {
+--     file_browser = {
+--       theme = "ivy",
+--       -- disables netrw and use telescope-file-browser in its place
+--       hijack_netrw = true,
+--       mappings = {
+--         ["i"] = {
+--           -- your custom insert mode mappings
+--         },
+--         ["n"] = {
+--           -- your custom normal mode mappings
+--         },
+--       },
+--     },
+--   },
+-- }
+--
+
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#282a36"})
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a" })
+vim.api.nvim_set_hl(0, "FloatTitle", { fg = "#666c7d", bg = "#1e222a" })
 

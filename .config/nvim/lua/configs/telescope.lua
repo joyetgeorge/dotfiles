@@ -19,3 +19,4 @@ function ShowSpellSuggestions()
   end)
 end
 
+require("telescope").load_extension "file_browser"
