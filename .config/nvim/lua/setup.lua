@@ -1,12 +1,16 @@
-require('dropbar').setup {}
-
 require('oil').setup {
   show_hidden = true,
   delete_to_trash = true,
   preview = {
     win_options = {
-      winhl = 'Normal:Normal,Float:Float',
+      winhighlight = 'NormalFloat',
     },
+  },
+  confirmation = {
+    border = 'rounded',
+  },
+  win_options = {
+    winblend = 0,
   },
 }
 
@@ -30,7 +34,7 @@ require('telescope').setup {
     layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
-        prompt_position = 'top',
+        prompt_position = 'bottom',
         preview_width = 0.55,
         results_width = 0.8,
       },
@@ -63,7 +67,6 @@ require('telescope').setup {
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-    -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
   },
 }

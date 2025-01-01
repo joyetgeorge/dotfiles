@@ -47,19 +47,15 @@ require 'mappings'
 require 'setup'
 require 'opts'
 
-vim.cmd.colorscheme 'terafox'
+vim.cmd.colorscheme 'onedark'
+
+require 'theme'
+
+--vim.o.mouse = ''
 
 vim.o.laststatus = 3
 
 vim.g.gitblame_highlight_group = 'GitBlameLine'
-
-vim.cmd [[
-  highlight TelescopeBorder guifg=#254147 guibg=#152528
-  highlight TelescopePromptBorder guifg=#254147 guibg=#152528
-  highlight TelescopeResultsBorder guifg=#254147 guibg=#152528
-  highlight TelescopePreviewBorder guifg=#254147 guibg=#152528
-  highlight GitBlameLine guifg=#152528 guibg=#254147
-]]
 
 vim.diagnostic.config {
   virtual_text = {
@@ -77,4 +73,19 @@ vim.diagnostic.config {
 vim.g.lazygit_floating_window_border_chars = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
 --vim.g.lazygit_floating_window_use_plenary = 1
 
-vim.api.nvim_set_hl(0, 'LazyGitBorder', { fg = '#254147', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'LazyGitBorder', { fg = '#31363f', bg = 'NONE' })
+
+require('lualine').setup {
+  options = {
+    component_separators = { left = '|', right = '|' },
+    section_separators = { left = '', right = '' },
+    sections = {
+      lualine_a = { 'mode' },
+      lualine_b = { 'branch', 'diff', 'diagnostics' },
+      lualine_c = { 'filename' },
+      lualine_x = { 'encoding', 'fileformat', 'filetype' },
+      lualine_y = { 'progress' },
+      lualine_z = { 'location' },
+    },
+  },
+}
