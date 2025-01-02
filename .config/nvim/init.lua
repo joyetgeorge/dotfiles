@@ -1,6 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
@@ -71,6 +73,3 @@ vim.diagnostic.config {
 }
 
 vim.g.lazygit_floating_window_border_chars = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
---vim.g.lazygit_floating_window_use_plenary = 1
-
-vim.api.nvim_set_hl(0, 'LazyGitBorder', { fg = '#31363f', bg = 'NONE' })

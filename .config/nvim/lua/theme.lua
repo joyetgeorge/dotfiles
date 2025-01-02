@@ -93,3 +93,23 @@ vim.api.nvim_set_hl(0, 'CmpItemKindTypeParameter', { fg = '#56B6C2', bg = '#2C31
 
 vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { bg = '#282c34' })
 vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { bg = '#282c34' })
+
+vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', { bg = '#2f3541' })
+
+vim.api.nvim_set_hl(0, 'NvimTreeWinSeparator', { fg = '#2f3541' })
+
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { fg = '#94979f' })
+
+vim.api.nvim_set_hl(0, 'NvimTreeGitFileDirtyHL', { fg = '#d19a66' })
+
+vim.api.nvim_set_hl(0, 'NvimTreeGitFileNewHL', { fg = '#98C379' })
+
+vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { fg = '#94979f' })
+
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderIcon', { fg = '#61AFEF' })
+
+vim.api.nvim_set_hl(0, 'NvimTreeClosedFolderIcon', { fg = '#61AFEF' })
+
+vim.api.nvim_set_hl(0, 'NeoTreeMessage', { fg = '#3E4451' })
+
+vim.api.nvim_set_hl(0, 'LazyGitBorder', { fg = '#31363f', bg = 'NONE' })

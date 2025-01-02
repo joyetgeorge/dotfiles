@@ -136,3 +136,64 @@ require('mini.statusline').setup {
   },
   use_icons = true,
 }
+
+-- IBL
+
+vim.cmd [[ highlight NvimTreeGitNew guifg=#00FF00 ]]
+
+require('ibl').setup {
+  indent = {
+    char = '▏',
+  },
+  scope = {
+    show_start = false,
+    show_end = false,
+  },
+}
+
+local hooks = require 'ibl.hooks'
+hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_tab_indent_level)
+
+-- TREE
+
+require('nvim-tree').setup {
+  view = {
+    width = 35,
+  },
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = '',
+      info = '',
+      warning = '',
+      error = '',
+    },
+  },
+  renderer = {
+    highlight_git = 'name',
+    root_folder_label = false,
+    icons = {
+      git_placement = 'right_align',
+      glyphs = {
+        git = {
+          unstaged = '󰬂',
+          staged = '󱎤',
+          unmerged = '󰬂󰫺',
+          renamed = '󰫿',
+          deleted = '󰫱',
+          untracked = '󰬂󰬁',
+          ignored = '󰫶',
+        },
+        folder = {
+          arrow_closed = '󰅂',
+          arrow_open = '󰅀',
+          default = ' ',
+          open = ' ',
+          empty = ' ',
+          empty_open = ' ',
+        },
+      },
+    },
+  },
+}
