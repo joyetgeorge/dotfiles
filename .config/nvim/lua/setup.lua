@@ -197,3 +197,24 @@ require('nvim-tree').setup {
     },
   },
 }
+
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = ' ●',
+    spacing = 2,
+    format = function(diagnostic)
+      return string.format('%s: %s ', diagnostic.severity, diagnostic.message)
+    end,
+  },
+  signs = true,
+  update_in_insert = false,
+  severity_sort = true,
+}
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
