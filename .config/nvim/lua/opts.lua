@@ -18,3 +18,9 @@ vim.opt.showmode = false
 vim.opt.relativenumber = true
 
 vim.api.nvim_set_hl(0, 'NeoTreeDirectoryIcon', { bg = '#1e222a' })
+
+vim.o.laststatus = 3
+
+vim.g.gitblame_highlight_group = 'GitBlameLine'
+
+vim.g.lazygit_floating_window_border_chars = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
