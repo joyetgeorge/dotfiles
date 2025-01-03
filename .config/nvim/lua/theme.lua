@@ -19,11 +19,14 @@ local colors = {
   float_bg = '#1b1f27',
 }
 
+vim.api.nvim_set_hl(0, 'DashboardHl', { fg = colors.prompt_border_bg })
+vim.api.nvim_set_hl(0, 'DashboardHlFooter', { fg = '#2C313C' })
+
 -- Prompt Highlights
 vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = colors.prompt_prefix_fg, bg = colors.prompt_border_bg })
 vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = colors.prompt_border_bg, bg = colors.prompt_border_bg })
 vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = colors.prompt_normal_fg, bg = colors.prompt_border_bg })
-vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = colors.prompt_title_bg, bg = colors.prompt_prefix_fg })
+vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = colors.prompt_border_bg, bg = colors.prompt_border_bg })
 vim.api.nvim_set_hl(0, 'TelescopePromptCounter', { fg = colors.prompt_counter_fg })
 
 -- Normal and Selection
