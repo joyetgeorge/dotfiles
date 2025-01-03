@@ -38,3 +38,31 @@ require 'opts'
 vim.cmd.colorscheme 'onedark'
 
 require 'theme'
+
+vim.opt.termguicolors = true
+require('bufferline').setup {
+  highlights = {
+    fill = {
+      fg = '#1e222a',
+      bg = '#1e222a',
+    },
+    background = {
+      bg = '#1e222a',
+    },
+    close_button = {
+      bg = '#1e222a',
+    },
+    modified = {
+      bg = '#1e222a',
+    },
+    pick_visible = {
+      bg = '#1e222a',
+    },
+    pick = {
+      bg = '#1e222a',
+    },
+    separator = {
+      bg = '#1e222a',
+    },
+  },
+}

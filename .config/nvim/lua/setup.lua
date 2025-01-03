@@ -34,13 +34,13 @@ require('telescope').setup {
     layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
-        prompt_position = 'top',
+        prompt_position = 'bottom',
         preview_width = 0.55,
         results_width = 0.8,
       },
-      vertical = {
-        mirror = true,
-      },
+      -- vertical = {
+      -- mirror = true,
+      -- },
       width = 0.87,
       height = 0.80,
       preview_cutoff = 120,
@@ -52,45 +52,12 @@ require('telescope').setup {
     winblend = 0,
     border = {},
     color_devicons = true,
-    borderchars = {
-      '─', -- left
-      '│', -- right
-      '─', -- top
-      '│', -- bottom
-      '┌', -- top-left
-      '┐', -- top-right
-      '┘', -- bottom-right
-      '└', -- bottom-left
-    },
     use_less = true,
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
-  },
-}
-
-require('cmp').setup {
-  window = {
-    completion = {
-      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
-      col_offset = -3,
-      side_padding = 0,
-    },
-  },
-  formatting = {
-    fields = { 'kind', 'abbr', 'menu' },
-    format = function(entry, vim_item)
-      local kind = require('lspkind').cmp_format { mode = 'symbol_text', maxwidth = 50 }(entry, vim_item)
-      local strings = vim.split(kind.kind, '%s', { trimempty = true })
-      kind.kind = ' ' .. (strings[1] or '') .. ' '
-      kind.menu = ' (' .. (strings[2] or '') .. ')'
-
-      kind.abbr = string.sub(vim_item.abbr, 1, 20)
-
-      return kind
-    end,
   },
 }
 
