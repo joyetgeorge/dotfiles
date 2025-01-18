@@ -15,7 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     error('Error cloning lazy.nvim:\n' .. out)
   end
-end ---@diagnostic disable-next-line: undefined-field
+end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
@@ -57,12 +57,41 @@ require('bufferline').setup {
     },
     pick_visible = {
       bg = '#1e222a',
+      italic = false,
+    },
+    pick_selected = {
+      italic = false,
     },
     pick = {
       bg = '#1e222a',
+      italic = false,
     },
     separator = {
       bg = '#1e222a',
     },
+    buffer_selected = {
+      italic = false,
+    },
+  },
+  options = {
+    show_close_icon = false,
+    show_buffer_close_icons = false,
+    offsets = {
+      {
+        filetype = 'NvimTree',
+        separator = true,
+        text_align = 'left',
+      },
+    },
   },
 }
+
+local fixBufferLineSeparator = function()
+  vim.api.nvim_set_hl(0, 'BufferLineOffsetSeparator', vim.api.nvim_get_hl_by_name('NvimTreeWinSeparator', true))
+end
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = fixBufferLineSeparator,
+})
+
+fixBufferLineSeparator()
