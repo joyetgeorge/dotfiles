@@ -21,7 +21,6 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 vim.keymap.set('n', '<leader>e', '<Cmd>NvimTreeToggle<CR>', { desc = 'Toggle nvim-tree' })
-vim.keymap.set('n', 'e', '<Cmd>NvimTreeFocus<CR>', { desc = 'Toggle nvim-tree' })
 
 map('n', '<leader>ff', ':Telescope find_files<CR>', { desc = 'Find files' })
 map('n', '<leader>fl', ':Telescope live_grep<CR>', { desc = 'Find text' })
@@ -34,3 +33,19 @@ map('n', '<leader>fs', ':Telescope spell_suggest<CR>', { desc = 'Find spell' })
 map('n', '<leader>fp', ':Telescope projects<CR>', { desc = 'Find projects' })
 map('n', '<leader>fg', ':Telescope git_status<CR>', { desc = 'Git status' })
 map('n', '<leader>ft', ':Telescope file_browser<CR>', { desc = 'Git status' })
+
+map('n', '<leader>bg', ':BufferLinePick<CR>', { desc = 'Pick buffer' })
+map('n', '<leader>bx', ':BufferLinePickClose<CR>', { desc = 'Pick Close buffer' })
+
+local function close_buffer()
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  if vim.bo[bufnr].modified then
+    vim.notify('Buffer has unsaved changes!', vim.log.levels.WARN)
+  else
+    vim.cmd 'bdelete'
+  end
+end
+
+-- Map the function to a keybinding
+vim.keymap.set('n', '<leader>x', close_buffer, { desc = 'Close buffer if no unsaved changes' })
