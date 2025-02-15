@@ -126,7 +126,8 @@ hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_tab_indent_level)
 
 require('nvim-tree').setup {
   view = {
-    width = 35,
+    width = 45,
+    side = 'right',
   },
   diagnostics = {
     enable = true,

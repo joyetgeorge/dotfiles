@@ -94,8 +94,9 @@ vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { fg = '#56B6C2', bg = '#2C313C' 
 vim.api.nvim_set_hl(0, 'CmpItemKindColor', { fg = '#56B6C2', bg = '#2C313C' })
 vim.api.nvim_set_hl(0, 'CmpItemKindTypeParameter', { fg = '#56B6C2', bg = '#2C313C' })
 
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { bg = '#282c34' })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { bg = '#282c34' })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { bg = '#ffaf57', fg = '#2C313C' })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { bg = '#f07278', fg = '#2C313C' })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommand', { bg = '#d3bfff', fg = '#2C313C' })
 
 vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', { bg = '#2f3541' })
 

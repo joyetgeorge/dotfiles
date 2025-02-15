@@ -1,13 +1,8 @@
 local map = vim.keymap.set
 
-local function pick_dropbar()
-  require('dropbar.api').pick()
-end
-
 map('n', ';', ':Telescope cmdline<CR>', { desc = 'CMD enter command mode' })
 map('i', 'jk', '<ESC>')
 map('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
-map('n', '<leader>dp', pick_dropbar, { desc = 'Dropbar Pick' })
 map({ 'n', 'x', 'o' }, 's', '<Plug>(leap-forward)')
 map({ 'n', 'x', 'o' }, 'S', '<Plug>(leap-backward)')
 map({ 'n', 'x', 'o' }, 'ls', '<Plug>(leap-from-window)')
@@ -34,8 +29,8 @@ map('n', '<leader>fp', ':Telescope projects<CR>', { desc = 'Find projects' })
 map('n', '<leader>fg', ':Telescope git_status<CR>', { desc = 'Git status' })
 map('n', '<leader>ft', ':Telescope file_browser<CR>', { desc = 'Git status' })
 
-map('n', '<leader>bg', ':BufferLinePick<CR>', { desc = 'Pick buffer' })
-map('n', '<leader>bx', ':BufferLinePickClose<CR>', { desc = 'Pick Close buffer' })
+-- map('n', '<leader>bg', ':BufferLinePick<CR>', { desc = 'Pick buffer' })
+-- map('n', '<leader>bx', ':BufferLinePickClose<CR>', { desc = 'Pick Close buffer' })
 
 local function close_buffer()
   local bufnr = vim.api.nvim_get_current_buf()

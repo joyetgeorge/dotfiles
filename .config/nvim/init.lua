@@ -40,58 +40,58 @@ vim.cmd.colorscheme 'onedark'
 require 'theme'
 
 vim.opt.termguicolors = true
-require('bufferline').setup {
-  highlights = {
-    fill = {
-      fg = '#1e222a',
-      bg = '#1e222a',
-    },
-    background = {
-      bg = '#1e222a',
-    },
-    close_button = {
-      bg = '#1e222a',
-    },
-    modified = {
-      bg = '#1e222a',
-    },
-    pick_visible = {
-      bg = '#1e222a',
-      italic = false,
-    },
-    pick_selected = {
-      italic = false,
-    },
-    pick = {
-      bg = '#1e222a',
-      italic = false,
-    },
-    separator = {
-      bg = '#1e222a',
-    },
-    buffer_selected = {
-      italic = false,
-    },
-  },
-  options = {
-    show_close_icon = false,
-    show_buffer_close_icons = false,
-    offsets = {
-      {
-        filetype = 'NvimTree',
-        separator = true,
-        text_align = 'left',
-      },
-    },
-  },
-}
-
-local fixBufferLineSeparator = function()
-  vim.api.nvim_set_hl(0, 'BufferLineOffsetSeparator', vim.api.nvim_get_hl_by_name('NvimTreeWinSeparator', true))
-end
-
-vim.api.nvim_create_autocmd('ColorScheme', {
-  callback = fixBufferLineSeparator,
-})
-
-fixBufferLineSeparator()
+-- require('bufferline').setup {
+--   highlights = {
+--     fill = {
+--       fg = '#1e222a',
+--       bg = '#1e222a',
+--     },
+--     background = {
+--       bg = '#1e222a',
+--     },
+--     close_button = {
+--       bg = '#1e222a',
+--     },
+--     modified = {
+--       bg = '#1e222a',
+--     },
+--     pick_visible = {
+--       bg = '#1e222a',
+--       italic = false,
+--     },
+--     pick_selected = {
+--       italic = false,
+--     },
+--     pick = {
+--       bg = '#1e222a',
+--       italic = false,
+--     },
+--     separator = {
+--       bg = '#1e222a',
+--     },
+--     buffer_selected = {
+--       italic = false,
+--     },
+--   },
+--   options = {
+--     show_close_icon = false,
+--     show_buffer_close_icons = false,
+--     offsets = {
+--       {
+--         filetype = 'NvimTree',
+--         separator = true,
+--         text_align = 'left',
+--       },
+--     },
+--   },
+-- }
+--
+-- local fixBufferLineSeparator = function()
+--   vim.api.nvim_set_hl(0, 'BufferLineOffsetSeparator', vim.api.nvim_get_hl_by_name('NvimTreeWinSeparator', true))
+-- end
+--
+-- vim.api.nvim_create_autocmd('ColorScheme', {
+--   callback = fixBufferLineSeparator,
+-- })
+--
+-- fixBufferLineSeparator()
