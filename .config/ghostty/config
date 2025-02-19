@@ -1,15 +1,15 @@
-background = #1e222a
+background = #1c1e26
 foreground = ffffff
 
-font-family = JetBrainsMono Nerd Font
-font-family-bold = JetBrainsMono Nerd Font Bold
-font-family-italic = JetBrainsMono Nerd Font Italic
-font-family-bold-italic = JetBrainsMono Nerd Font Bold Italic
+#font-family = JetBrainsMono Nerd Font
+#font-family-bold = JetBrainsMono Nerd Font Bold
+#font-family-italic = JetBrainsMono Nerd Font Italic
+#font-family-bold-italic = JetBrainsMono Nerd Font Bold Italic
 
-#font-family = OxProto Nerd Font
-#font-family-bold = OxProto Nerd Font Bold
-#font-family-italic = OxProto Nerd Font Italic
-#font-family-bold-italic = OxProto Nerd Font Bold Italic
+font-family = Fira Code Nerd Font
+font-family-bold = OxProto Nerd Font Bold
+font-family-italic = OxProto Nerd Font Italic
+font-family-bold-italic = OxProto Nerd Font Bold Italic
 
 font-size = 14.2
 adjust-cell-height = 18%
