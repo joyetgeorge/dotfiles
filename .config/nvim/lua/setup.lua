@@ -61,49 +61,6 @@ require('telescope').setup {
   },
 }
 
--- MINI STATUSLINE
-
-local blocked_filetypes = {
-  ['man'] = true,
-  ['dashboard'] = true,
-  ['leetcode.nvim'] = true,
-}
-
-local MiniStatusline = require 'mini.statusline'
-
-require('mini.statusline').setup {
-  content = {
-    active = function()
-      local diag_signs = {
-        ERROR = '%#DiagnosticError#󰄯 %#MiniStatuslineDevinfo#',
-        WARN = '%#DiagnosticWarn#󰄯 %#MiniStatuslineDevinfo#',
-        INFO = '%#DiagnosticInfo#󰄯 %#MiniStatuslineDevinfo#',
-        HINT = '%#DiagnosticHint#󰄯 %#MiniStatuslineDevinfo#',
-      }
-      if blocked_filetypes[vim.bo.filetype] then
-        vim.cmd 'highlight StatusLine guibg=NONE guifg=NONE'
-        return ''
-      end
-      local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 75 }
-      local git = MiniStatusline.section_git { trunc_width = 75 }
-      local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75, signs = diag_signs }
-      local filename = MiniStatusline.section_filename { trunc_width = 120 }
-      local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
-      local search = MiniStatusline.section_searchcount { trunc_width = 75 }
-      return MiniStatusline.combine_groups {
-        { hl = mode_hl, strings = { mode } },
-        { hl = 'MiniStatuslineDevinfo', strings = { git, diagnostics } },
-        '%<', -- Mark general truncate point
-        { hl = 'MiniStatuslineFilename', strings = { filename } },
-        '%=', -- End left alignment
-        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-        { hl = mode_hl, strings = { search } },
-      }
-    end,
-  },
-  use_icons = true,
-}
-
 -- IBL
 
 vim.cmd [[ highlight NvimTreeGitNew guifg=#00FF00 ]]

@@ -23,7 +23,7 @@ vim.keymap.set('n', '<leader>gb', ':GitBlameToggle <CR>', { desc = 'Toggle git b
 
 vim.keymap.set('n', '<leader>e', '<Cmd>NvimTreeToggle<CR>', { desc = 'Toggle nvim-tree' })
 
-map('n', '<leader>ff', ':Telescope find_files<CR>', { desc = 'Find files' })
+map('n', '<leader>ff', ':Telescope smart_open<CR>', { desc = 'Find files' })
 map('n', '<leader>fa', ':Telescope harpoon marks<CR>', { desc = 'Find files' })
 map('n', '<leader>fl', ':Telescope live_grep<CR>', { desc = 'Find text' })
 map('n', '<leader>fb', ':Telescope buffers<CR>', { desc = 'Find buffers' })
@@ -36,8 +36,9 @@ map('n', '<leader>fp', ':Telescope projects<CR>', { desc = 'Find projects' })
 map('n', '<leader>fg', ':Telescope git_status<CR>', { desc = 'Git status' })
 map('n', '<leader>ft', ':Telescope file_browser<CR>', { desc = 'Git status' })
 
-map('n', '<leader>bg', ':BufferLinePick<CR>', { desc = 'Pick buffer' })
-map('n', '<leader>bx', ':BufferLinePickClose<CR>', { desc = 'Pick Close buffer' })
+map('n', '<leader>bg', ':BufferPick<CR>', { desc = 'Pick buffer' })
+map('n', '<leader>bx', ':BufferPickDelete<CR>', { desc = 'Pick Close buffer' })
+-- Map the function to a keybinding
 
 local function close_buffer()
   local bufnr = vim.api.nvim_get_current_buf()
