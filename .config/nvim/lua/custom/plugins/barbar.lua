@@ -12,6 +12,7 @@ return {
     -- animation = true,
     -- insert_at_start = true,
     -- …etc.
+    clickable = false,
     icons = {
       separator = { left = '| ', right = '' },
       inactive = {
