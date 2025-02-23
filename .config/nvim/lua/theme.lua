@@ -18,3 +18,7 @@ vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', { bg = colors.bg_default })
 vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = colors.bg_dark, bg = colors.bg_dark })
 vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = colors.bg_dark, bg = colors.bg_dark })
 vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { fg = colors.hilight, bg = colors.bg_dark })
+
+vim.api.nvim_set_hl(0, 'htmlTag', { fg = '#E5C07B' })
+vim.api.nvim_set_hl(0, 'htmlTagName', { fg = '#db887a' })
+
