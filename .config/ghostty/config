@@ -1,6 +1,8 @@
-background = #1c1e26
-foreground = ffffff
-theme = Horizon
+background = #272e32
+foreground = #ffffff
+theme = Everforest Dark - Hard
+
+command = ~/scripts/tmux.sh
 
 #font-family = JetBrainsMono Nerd Font
 #font-family-bold = JetBrainsMono Nerd Font Bold

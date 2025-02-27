@@ -1,8 +1,8 @@
 local colors = {
-  hilight = '#a4435c',
-  bg_dark = '#191A22',
-  bg_light = '#1A1B23',
-  bg_default = '#191A22',
+  hilight = '#c3646b',
+  bg_dark = '#2D3639',
+  bg_light = '#2e383c',
+  bg_default = '#2D3639',
 }
 
 vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = colors.bg_light, bg = colors.bg_light })
@@ -21,4 +21,3 @@ vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { fg = colors.hilight, bg = col
 
 vim.api.nvim_set_hl(0, 'htmlTag', { fg = '#E5C07B' })
 vim.api.nvim_set_hl(0, 'htmlTagName', { fg = '#db887a' })
-

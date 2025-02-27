@@ -35,7 +35,7 @@ require 'mappings'
 require 'setup'
 require 'opts'
 
-vim.cmd.colorscheme 'horizon'
+vim.cmd.colorscheme 'everforest'
 
 require 'theme'
 
