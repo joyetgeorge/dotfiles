@@ -1,0 +1,21 @@
+[
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "ctrl-/": "workspace::ToggleBottomDock",
+      "super-e": "workspace::ToggleRightDock",
+      "space p": "editor::Format",
+      "space space": "file_finder::Toggle",
+      "space v": "pane::SplitRight"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  }
+]
