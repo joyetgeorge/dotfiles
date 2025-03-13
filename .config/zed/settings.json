@@ -1,0 +1,60 @@
+{
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "formatter": "prettier",
+  "preferred_line_length": 80,
+  "show_edit_predictions": true,
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "collaboration_panel": {
+    "dock": "right",
+    "button": false
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
+  },
+  "buffer_line_height": "comfortable",
+  "icon_theme": "JetBrains New UI Icons (Dark)",
+  "scrollbar": {
+    "show": "never"
+  },
+  "assistant": {
+    "default_model": {
+      "provider": "openai",
+      "model": "o1-mini"
+    },
+    "version": "2"
+  },
+  "project_panel": {
+    "dock": "right"
+  },
+  "base_keymap": "VSCode",
+  "terminal": {
+    "toolbar": {
+      "breadcrumbs": false
+    }
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+  "vim": {
+    "highlight_on_yank_duration": 150,
+    "enable_vim_sneak": true
+  },
+  "relative_line_numbers": true,
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark Flat"
+  }
+}
