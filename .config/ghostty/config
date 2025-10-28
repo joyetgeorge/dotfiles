@@ -1,5 +1,7 @@
-background = #1e222a
-foreground = ffffff
+background = #1a2b34
+#foreground = ffffff
+
+theme = Oceanic Next
 
 font-family = JetBrainsMono Nerd Font
 font-family-bold = JetBrainsMono Nerd Font Bold
