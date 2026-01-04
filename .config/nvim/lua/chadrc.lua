@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "oceanic-next",
+	theme = "everblush",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -16,13 +16,25 @@ M.base46 = {
 
 -- M.nvdash = { load_on_startup = true }
 M.ui = {
---       tabufline = {
---          lazyload = false
---      }
-   statusline = {
+  statusline = {
     theme = "vscode_colored",
     separator_style = "block"
-  }
+  },
+  tabufline = {
+    modules = {
+      git_changes = function()
+        -- Set custom highlight for git changes
+        vim.api.nvim_set_hl(0, "TabuflineGitChanges", { fg = "#4D78CC", bold = true })
+        local result = vim.fn.system("git status --porcelain 2>/dev/null | wc -l | tr -d ' '")
+        local count = tonumber(result) or 0
+        if count > 0 then
+          return "%#TabuflineGitChanges#  " .. count .. " "
+        end
+        return ""
+      end,
+    },
+    order = { "treeOffset", "buffers", "tabs", "git_changes", "btns" },
+  },
 }
 
 return M

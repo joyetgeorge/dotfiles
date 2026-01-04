@@ -31,6 +31,7 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "autocmds"
+require "configs.lspconfig"
 
 vim.schedule(function()
   require "mappings"
@@ -41,10 +42,11 @@ vim.opt.fillchars:remove("eob")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- vim.filetype.add({
---   extension = {
---     tsx = "typescriptreact",
---     jsx = "javascriptreact",
---   },
--- })
+vim.filetype.add {
+  extension = {
+    mdx = "mdx",
+  },
+}
 
+-- Use markdown treesitter parser for MDX files
+vim.treesitter.language.register("markdown", "mdx")
