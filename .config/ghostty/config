@@ -1,5 +1,7 @@
-background = #1e222a
-foreground = ffffff
+background = #131B1E
+#foreground = ffffff
+
+theme = "Solarized Dark Patched"
 
 font-family = JetBrainsMono Nerd Font
 font-family-bold = JetBrainsMono Nerd Font Bold
@@ -12,7 +14,7 @@ font-family-bold-italic = JetBrainsMono Nerd Font Bold Italic
 #font-family-bold-italic = OxProto Nerd Font Bold Italic
 
 font-size = 14.2
-adjust-cell-height = 18%
+adjust-cell-height = 23%
 macos-titlebar-style = hidden
 macos-non-native-fullscreen = true
 window-padding-x = 10
