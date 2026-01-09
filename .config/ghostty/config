@@ -1,7 +1,7 @@
-background = #131B1E
+background = #121f1d
 #foreground = ffffff
 
-theme = "Solarized Dark Patched"
+theme = "Forest Blue"
 
 font-family = JetBrainsMono Nerd Font
 font-family-bold = JetBrainsMono Nerd Font Bold
@@ -25,8 +25,25 @@ window-padding-y = 10,3
 keybind = cmd+s>r=reload_config
 keybind = cmd+s>x=close_surface
 
+# Navigate splits
+keybind = cmd+[=goto_split:previous
+keybind = cmd+]=goto_split:next
+keybind = cmd+shift+enter=toggle_split_zoom
+
 mouse-hide-while-typing = true
 cursor-style = block
 window-save-state = always
 
 copy-on-select = clipboard
+keybind = shift+enter=text:\x1b\r
+
+# Pane separator color
+split-divider-color = #6b9c7a
+unfocused-split-opacity = 0.3
+
+keybind = ctrl+a>n=next_tab
+keybind = ctrl+a>p=previous_tab
+
+keybind = super+r=reload_config
+
+window-save-state = always

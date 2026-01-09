@@ -5,6 +5,15 @@ return {
     opts = require "configs.conform",
   },
 
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        file_ignore_patterns = { "storybook%-static/", "node_modules/" },
+      },
+    },
+  },
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
