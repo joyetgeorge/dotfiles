@@ -1,4 +1,8 @@
 gui:
+  showFileTree: false
+  showRandomTip: false
+  sidePanelWidth: 0.25
+  border: "single"
   theme:
     lightTheme: false
     activeBorderColor:
@@ -28,10 +32,10 @@ gui:
   screenMode: "half"
   authorColors:
     '*': '#b294bb'
-
 git:
   autoFetch: true
   pagers:
     - pager: delta --dark --paging=never --syntax-theme OneHalfDark -s --line-numbers --navigate --hyperlinks --file-style="bold yellow" --hunk-header-style="line-number syntax"
   commit:
     signOff: true
+promptToReturnFromSubprocess: false

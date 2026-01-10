@@ -17,6 +17,7 @@ font-size = 14.2
 adjust-cell-height = 23%
 macos-titlebar-style = hidden
 macos-non-native-fullscreen = true
+macos-option-as-alt = true
 window-padding-x = 10
 window-padding-y = 10,3
 #command=/opt/homebrew/bin/tmux
@@ -45,5 +46,8 @@ keybind = ctrl+a>n=next_tab
 keybind = ctrl+a>p=previous_tab
 
 keybind = super+r=reload_config
+
+# Option+Backspace to delete word
+keybind = alt+backspace=text:\x17
 
 window-save-state = always
