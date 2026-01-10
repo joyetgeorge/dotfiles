@@ -203,4 +203,27 @@ return {
       end,
     },
   },
+
+  -- Lazygit: Open lazygit in a floating terminal
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+    config = function()
+      vim.g.lazygit_floating_window_border_chars = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
+      vim.api.nvim_set_hl(0, "LazyGitBorder", { fg = "#5f8787" })
+      vim.g.lazygit_floating_window_winblend = 0
+    end,
+  },
 }
