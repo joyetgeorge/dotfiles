@@ -6,6 +6,10 @@
     tool = delta
 
 [delta]
+    dark = true
+    line-numbers = true
+
+[delta]
 	dark = true
 	features = hoopoe
 

@@ -13,10 +13,6 @@ alias gpo='git push origin "$(git symbolic-ref --short HEAD)"'
 
 source $(brew --prefix nvm)/nvm.sh
 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 export PATH="$HOME/.claude/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -99,8 +95,8 @@ wtd() {
   fi
 }
 
-# Override oh-my-zsh gwt alias to use gwt CLI
-unalias gwt 2>/dev/null
-
 # gwt shell integration (cd support + completions)
 eval "$(command gwt shell-init)"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+eval "$(zoxide init zsh)"
