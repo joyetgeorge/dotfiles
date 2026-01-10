@@ -29,7 +29,6 @@ gui:
   nerdFontsVersion: "3"
   showBottomLine: false
   expandFocusedSidePanel: true
-  screenMode: "half"
   authorColors:
     '*': '#b294bb'
 git:
