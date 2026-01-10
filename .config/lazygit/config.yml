@@ -1,23 +1,37 @@
 gui:
   theme:
+    lightTheme: false
     activeBorderColor:
-      - "#6397a9"
+      - "#5f8787"
       - bold
     inactiveBorderColor:
-      - "#152528"
+      - "#5f8787"
+    optionsTextColor:
+      - "#5f8787"
     selectedLineBgColor:
-      - "#254147"
-
+      - "#1a2c2e"
+    cherryPickedCommitFgColor:
+      - "#c9b98a"
+    cherryPickedCommitBgColor:
+      - "#1a2c2e"
+    markedBaseCommitBgColor:
+      - "#1a2c2e"
+    markedBaseCommitFgColor:
+      - "#c9b98a"
+    unstagedChangesColor:
+      - "#c9645a"
+    defaultFgColor:
+      - "#b0c4b0"
   nerdFontsVersion: "3"
   showBottomLine: false
   expandFocusedSidePanel: true
-  windowSize: "half"
-  authorColors: 
+  screenMode: "half"
+  authorColors:
     '*': '#b294bb'
 
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --syntax-theme base16-256 -s
+  autoFetch: true
+  pagers:
+    - pager: delta --dark --paging=never --syntax-theme OneHalfDark -s --line-numbers --navigate --hyperlinks --file-style="bold yellow" --hunk-header-style="line-number syntax"
   commit:
     signOff: true
