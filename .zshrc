@@ -10,6 +10,8 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias vim="nvim"
 alias gpo='git push origin "$(git symbolic-ref --short HEAD)"'
+alias gm="gemini"
+alias nn="nvim"
 
 source $(brew --prefix nvm)/nvm.sh
 
