@@ -9,7 +9,29 @@ return {
     "nvim-telescope/telescope.nvim",
     opts = {
       defaults = {
-        file_ignore_patterns = { "storybook%-static/", "node_modules/" },
+        file_ignore_patterns = { "storybook%-static/", "node_modules/", ".git/" },
+        sorting_strategy = "descending",
+        layout_config = {
+          horizontal = {
+            prompt_position = "bottom",
+          },
+        },
+        vimgrep_arguments = {
+          "rg",
+          "-L",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+        },
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
       },
     },
   },
