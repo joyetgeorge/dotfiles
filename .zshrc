@@ -12,6 +12,7 @@ alias vim="nvim"
 alias gpo='git push origin "$(git symbolic-ref --short HEAD)"'
 alias gm="gemini"
 alias nn="nvim"
+alias lg="lazygit"
 
 source $(brew --prefix nvm)/nvm.sh
 
