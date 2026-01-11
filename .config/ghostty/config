@@ -1,6 +1,7 @@
 background = #121f1d
 window-colorspace = display-p3
 #foreground = ffffff
+# command=/opt/homebrew/bin/tmux
 
 theme = "Forest Blue"
 
