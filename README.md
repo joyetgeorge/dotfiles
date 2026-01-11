@@ -45,6 +45,11 @@ Here's a breakdown of the most important configuration files:
     *   Configures window gaps and padding.
     *   Enables mouse-follows-focus.
 
+*   **`.config/aerospace/aerospace.toml`**: Configuration for `AeroSpace`, an i3-like tiling window manager for macOS.
+    *   Defines keybindings for focus, window movement, and workspaces.
+    *   Sets window gaps and padding (consistent with `yabai`).
+    *   Configures floating rules for specific applications.
+
 *   **`.config/lazygit/config.yml`**: Configuration for `lazygit`, a terminal UI for Git.
     *   Customizes the theme and layout.
     *   Sets `delta` as the pager.
