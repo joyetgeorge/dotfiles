@@ -1,4 +1,5 @@
 background = #121f1d
+window-colorspace = display-p3
 #foreground = ffffff
 
 theme = "Forest Blue"
@@ -14,6 +15,7 @@ font-family-bold-italic = JetBrainsMono Nerd Font Bold Italic
 #font-family-bold-italic = OxProto Nerd Font Bold Italic
 
 font-size = 14.2
+font-feature = -calt,-liga,-clig
 adjust-cell-height = 23%
 macos-titlebar-style = hidden
 macos-non-native-fullscreen = true
@@ -33,6 +35,7 @@ keybind = cmd+shift+enter=toggle_split_zoom
 
 mouse-hide-while-typing = true
 cursor-style = block
+cursor-color = #18B06A
 custom-shader-animation = true
 custom-shader = ~/.config/ghostty/shaders/cursor_warp.glsl
 window-save-state = always
