@@ -1,8 +1,6 @@
-# GEMINI.md
-
 ## Directory Overview
 
-This repository contains personal configuration files (dotfiles) for a development environment on macOS. The setup is managed using GNU Stow, as indicated in the `README.md`. The configurations cover shell, terminal, text editor, and various development tools.
+This repository contains personal configuration files (dotfiles) for a development environment on macOS. The configurations cover shell, terminal, text editor, and various development tools.
 
 ## Key Files
 
