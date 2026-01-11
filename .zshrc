@@ -97,8 +97,7 @@ wtd() {
   fi
 }
 
-# gwt shell integration (cd support + completions)
-eval "$(command gwt shell-init)"
+
 
 export XDG_CONFIG_HOME="$HOME/.config"
 eval "$(zoxide init zsh)"
