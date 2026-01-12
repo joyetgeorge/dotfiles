@@ -101,17 +101,66 @@ wtd() {
 
 znf() {
   local dir file
-  dir=$(zoxide query -l | fzf --height=40% --reverse) || return
 
-  file=$(
-    fd . "$dir" \
-      --type f \
-      --hidden \
-      --exclude .git \
-    | fzf --preview 'bat --style=plain --paging=never {}'
-  ) || return
+  while true; do
+    # --- Project picker (zoxide frecency preserved) ---
+    dir=$(
+      zoxide query -l \
+      | sed "s|^$HOME/||" \
+      | awk '{ print "󰉋 " $0 }' \
+      | fzf --ansi \
+            --height=40% \
+            --reverse \
+            --prompt="Projects ❯ " \
+            --delimiter=' ' \
+            --nth=2.. \
+            --preview "ls -la $HOME/{2}"
+    ) || return
 
-  nvim "$file"
+    dir="$HOME/$(echo "$dir" | cut -d' ' -f2-)"
+
+    # --- File picker (Ctrl-B = back to projects) ---
+    file=$(
+      eza --icons=always \
+          --color=always \
+          --all \
+          --git-ignore \
+          --absolute \
+          --oneline \
+          "$dir" \
+      | awk '
+          {
+            path=$NF
+            name=path
+            sub(".*/","",name)
+            icon=$1
+            print icon "  " name "  " path
+          }
+        ' \
+      | fzf --ansi \
+            --delimiter='  ' \
+            --with-nth=1,2 \
+            --nth=2 \
+            --prompt="Files ❯ " \
+            --bind 'ctrl-b:abort' \
+            --preview "
+              if [ -d {3} ]; then
+                eza --icons=always --color=always --all {3}
+              else
+                bat --style=plain --paging=never --color=always {3}
+              fi
+            "
+    )
+
+    # If Ctrl-B pressed → go back to directory picker
+    if [ $? -ne 0 ]; then
+      continue
+    fi
+
+    # Open selected file
+    nvim "$(echo "$file" | awk -F'  ' '{print $3}')"
+    return
+  done
 }
 
 fe() {
