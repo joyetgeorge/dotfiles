@@ -99,7 +99,61 @@ wtd() {
   fi
 }
 
+znf() {
+  local dir file
+  dir=$(zoxide query -l | fzf --height=40% --reverse) || return
+  file=$(fd . "$dir" --type f | fzf --preview 'bat --style=numbers --color=always {}') || return
+  nvim "$file"
+}
 
+znf2() {
+  local dir file
+  dir=$(zoxide query -l | fzf --height=40% --reverse) || return
+  file=$(rg --files "$dir" | fzf --preview 'bat --style=numbers --color=always {}') || return
+  nvim "$file"
+}
+
+fe() {
+  local file
+  file=$(fzf --preview 'bat --style=numbers --color=always {}') || return
+  nvim "$file"
+}
+
+export FZF_DEFAULT_OPTS='
+  --height=60%
+  --layout=reverse
+  --border
+  --margin=1
+  --padding=1
+  --info=inline
+  --ansi
+
+  --prompt="󰍉 "
+  --pointer="❯"
+  --marker="󰄬"
+  --separator="─"
+  --scrollbar=""
+
+  --color=bg:#121f1d,bg+:#121f1d
+  --color=fg:#b8d6cf,fg+:#e6f6f1
+
+  --color=hl:#18B06A,hl+:#18B06A
+  --color=prompt:#18B06A
+  --color=pointer:#18B06A
+  --color=marker:#18B06A
+  --color=spinner:#18B06A
+
+  --color=border:#29413B
+  --color=label:#29413B
+
+  --color=info:#5fd7a7
+  --color=header:#5fd7a7
+
+  --bind=ctrl-j:down,ctrl-k:up,ctrl-d:half-page-down,ctrl-u:half-page-up
+
+  --preview "([[ -d {} ]] && ls -la {}) || bat --style=plain --paging=never {}"
+  --preview-window=right:60%:wrap:noinfo
+'
 
 export XDG_CONFIG_HOME="$HOME/.config"
 eval "$(zoxide init zsh)"
