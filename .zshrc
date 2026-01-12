@@ -102,14 +102,15 @@ wtd() {
 znf() {
   local dir file
   dir=$(zoxide query -l | fzf --height=40% --reverse) || return
-  file=$(fd . "$dir" --type f | fzf --preview 'bat --style=numbers --color=always {}') || return
-  nvim "$file"
-}
 
-znf2() {
-  local dir file
-  dir=$(zoxide query -l | fzf --height=40% --reverse) || return
-  file=$(rg --files "$dir" | fzf --preview 'bat --style=numbers --color=always {}') || return
+  file=$(
+    fd . "$dir" \
+      --type f \
+      --hidden \
+      --exclude .git \
+    | fzf --preview 'bat --style=plain --paging=never {}'
+  ) || return
+
   nvim "$file"
 }
 
