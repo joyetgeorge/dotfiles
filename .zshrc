@@ -207,3 +207,6 @@ export FZF_DEFAULT_OPTS='
 
 export XDG_CONFIG_HOME="$HOME/.config"
 eval "$(zoxide init zsh)"
+
+# opencode
+export PATH=/Users/joyetgeorge/.opencode/bin:$PATH
