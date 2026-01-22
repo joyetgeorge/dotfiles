@@ -6,10 +6,32 @@ local config = wezterm.config_builder()
 -- Manually setting background to match Ghostty's #121f1d
 config.colors = {
   background = '#121f1d',
-  -- You might want to populate other colors to match Forest Blue exactly
-  -- using a palette if available.
+  tab_bar = {
+    background = '#0e1816',
+    active_tab = {
+      bg_color = '#121f1d',
+      fg_color = '#c0c0c0',
+      intensity = 'Bold',
+    },
+    inactive_tab = {
+      bg_color = '#0e1816',
+      fg_color = '#505050',
+    },
+    inactive_tab_hover = {
+      bg_color = '#152523',
+      fg_color = '#606060',
+    },
+    new_tab = {
+      bg_color = '#0e1816',
+      fg_color = '#505050',
+    },
+    new_tab_hover = {
+      bg_color = '#152523',
+      fg_color = '#606060',
+    },
+  },
 }
-config.font = wezterm.font 'JetBrains Mono'
+config.font = wezterm.font 'JetBrainsMono Nerd Font'
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.font_size = 14.2
 config.line_height = 1.23
@@ -39,7 +61,7 @@ config.send_composed_key_when_left_alt_is_pressed = false
 config.send_composed_key_when_right_alt_is_pressed = false
 
 -- Leader Key
-config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
+config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 2000 }
 
 -- Key Bindings
 config.keys = {
@@ -71,6 +93,68 @@ config.keys = {
     key = 'Enter',
     mods = 'SHIFT',
     action = wezterm.action.SendString '\x1b\r',
+  },
+  -- Horizontal split (Stacked)
+  {
+    key = '\\',
+    mods = 'LEADER',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  -- Vertical split (Side-by-side)
+  {
+    key = "'",
+    mods = 'LEADER',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  -- Close current pane
+  {
+    key = 'x',
+    mods = 'LEADER',
+    action = wezterm.action.CloseCurrentPane { confirm = true },
+  },
+  -- Toggle zoom pane
+  {
+    key = 'Enter',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.TogglePaneZoomState,
+  },
+  {
+    key = 'w',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.CloseCurrentPane { confirm = false },
+  },
+  -- Pane Navigation
+  {
+    key = 'h',
+    mods = 'LEADER',
+    action = wezterm.action.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'j',
+    mods = 'LEADER',
+    action = wezterm.action.ActivatePaneDirection 'Down',
+  },
+  {
+    key = 'k',
+    mods = 'LEADER',
+    action = wezterm.action.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'l',
+    mods = 'LEADER',
+    action = wezterm.action.ActivatePaneDirection 'Right',
+  },
+  -- Switch (Cycle) to next pane
+  {
+    key = 'o',
+    mods = 'CMD',
+    action = wezterm.action.ActivatePaneDirection 'Next',
+  },
+  -- Interactive Pane Select
+  {
+    key = 's',
+    mods = 'LEADER',
+    action = wezterm.action.PaneSelect,
   },
 }
 

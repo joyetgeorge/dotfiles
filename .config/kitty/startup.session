@@ -1,0 +1,11 @@
+# Kitty Startup Session
+
+# First tab (default)
+new_tab home
+cd ~
+launch zsh
+
+# Second tab (Dotfiles)
+new_tab dotfiles
+cd ~/dotfiles
+launch zsh
