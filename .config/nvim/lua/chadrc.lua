@@ -51,6 +51,7 @@ M.ui = {
   },
   tabufline = {
     close_icon = "",
+    enabled = false,
     modules = {
       git_changes = function()
         vim.api.nvim_set_hl(0, "TabuflineGitChanges", { fg = "#4D78CC", bold = true })
