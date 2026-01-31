@@ -50,3 +50,6 @@ vim.filetype.add {
 
 -- Use markdown treesitter parser for MDX files
 vim.treesitter.language.register("markdown", "mdx")
+
+-- Enable built-in tutor
+vim.cmd('runtime plugin/tutor.vim')

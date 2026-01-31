@@ -1,6 +1,12 @@
 require "nvchad.options"
 
--- add yours here!
+local o = vim.o
+local opt = vim.opt
 
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
+-- Performance options
+o.updatetime = 250
+o.timeoutlen = 400
+o.redrawtime = 1500
+opt.synmaxcol = 300
+o.foldmethod = "manual"
+o.foldlevelstart = 99
