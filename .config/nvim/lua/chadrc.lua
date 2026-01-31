@@ -49,6 +49,9 @@ M.ui = {
     theme = "vscode_colored",
     separator_style = "block"
   },
+  nvimtree = {
+    side = "right", -- 👈 move file tree to right
+  },
   tabufline = {
     close_icon = "",
     enabled = false,
