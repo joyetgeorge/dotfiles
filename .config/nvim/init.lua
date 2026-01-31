@@ -48,8 +48,14 @@ vim.filetype.add {
   },
 }
 
--- Use markdown treesitter parser for MDX files
-vim.treesitter.language.register("markdown", "mdx")
+vim.api.nvim_create_autocmd("UIEnter", {
+  once = true,
+  callback = function()
+    vim.schedule(function()
+      if vim.fn.argc() == 0 then
+        require("oil").open()
+      end
+    end)
+  end,
+})
 
--- Enable built-in tutor
-vim.cmd('runtime plugin/tutor.vim')

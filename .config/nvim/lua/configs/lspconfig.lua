@@ -37,7 +37,7 @@ vim.lsp.config("eslint", {
   },
 })
 
-local servers = { "html", "cssls", "ts_ls", "mdx_analyzer", "graphql", "jsonls" }
+local servers = { "html", "cssls", "ts_ls", "mdx_analyzer", "graphql", "jsonls", "gopls" }
 vim.lsp.enable(servers)
 vim.lsp.enable("eslint")
 
@@ -49,3 +49,4 @@ vim.diagnostic.config({
   },
   severity_sort = true,
 })
+

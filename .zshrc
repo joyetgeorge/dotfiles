@@ -1,5 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim  
+export PATH="$HOME/go/bin:$PATH"
 
 eval "$(starship init zsh)"
 
