@@ -210,3 +210,6 @@ eval "$(zoxide init zsh)"
 
 # opencode
 export PATH=/Users/joyetgeorge/.opencode/bin:$PATH
+
+_fix_cursor() { echo -ne '\e[2 q' }
+precmd_functions+=(_fix_cursor)
