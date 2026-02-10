@@ -1,62 +1,51 @@
-## Directory Overview
+# Dotfiles
 
-This repository contains personal configuration files (dotfiles) for a development environment on macOS. The configurations cover shell, terminal, text editor, and various development tools.
+These are some of my config files I have for some of the tools I use daily
 
-## Key Files
+## Tools & Configurations
 
-Here's a breakdown of the most important configuration files:
+### Shell & Environment
+*   [Zsh](https://github.com/zsh-users/zsh) - Shell
+*   [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - Zsh Framework
+*   [Starship](https://github.com/starship/starship) - Cross-Shell Prompt
+*   [fzf](https://github.com/junegunn/fzf) - Command-line Fuzzy Finder
+*   [zoxide](https://github.com/ajeetdsouza/zoxide) - Smarter cd command
+*   [eza](https://github.com/eza-community/eza) - Modern replacement for ls
+*   [bat](https://github.com/sharkdp/bat) - A cat(1) clone with wings
+*   [nvm](https://github.com/nvm-sh/nvm) - Node Version Manager
 
-*   **`.zshrc`**: The main configuration file for the Zsh shell.
-    *   Initializes Oh My Zsh and several plugins (`git`, `zsh-autosuggestions`, `zsh-syntax-highlighting`, `zsh-fzf-history-search`).
-    *   Sets `nvim` as the default editor.
-    *   Configures the Starship prompt.
-    *   Includes several useful aliases and functions, particularly for managing Git worktrees (`wt`, `wtdone`, `wtl`, `wts`, `wtd`).
-    *   Integrates `nvm` for Node.js version management and `zoxide` for directory navigation.
+### Editors
+*   [Neovim](https://github.com/neovim/neovim) - Hyperextensible Vim-based text editor
+*   [Helix](https://github.com/helix-editor/helix) - Post-modern modal text editor
 
-*   **`.config/nvim/init.lua`**: The entry point for the Neovim configuration.
-    *   Uses `lazy.nvim` for plugin management.
-    *   Based on NvChad v2.5, with custom plugins and configurations in the `lua/plugins/` directory.
-    *   Loads custom options, autocommands, and LSP settings.
+### Terminals & Multiplexers
+*   [Alacritty](https://github.com/alacritty/alacritty) - GPU-accelerated terminal emulator
+*   [Ghostty](https://github.com/ghostty-org/ghostty) - Fast, feature-rich terminal emulator
+*   [Kitty](https://github.com/kovidgoyal/kitty) - GPU-based terminal emulator
+*   [WezTerm](https://github.com/wez/wezterm) - GPU-accelerated cross-platform terminal emulator
+*   [Tmux](https://github.com/tmux/tmux) - Terminal multiplexer
+*   [Zellij](https://github.com/zellij-org/zellij) - Terminal workspace with batteries included
 
-*   **`.config/alacritty/alacritty.toml`**: Configuration for the Alacritty terminal emulator.
-    *   Sets the font to "JetBrainsMono Nerd Font".
-    *   Defines a custom color scheme.
-    *   Configures the shell to launch `tmux` automatically.
-    *   Includes custom keyboard bindings.
+### Window Management & System
+*   [Yabai](https://github.com/koekeishiya/yabai) - Tiling window manager for macOS
+*   [AeroSpace](https://github.com/nikitabobko/AeroSpace) - i3-like tiling window manager for macOS
+*   [Karabiner-Elements](https://github.com/pqrs-org/Karabiner-Elements) - Powerful keyboard customizer for macOS
 
-*   **`.config/starship.toml`**: Configuration for the Starship cross-shell prompt.
-    *   Customizes the symbols for various tools and programming languages.
-    *   Defines custom symbols for different operating systems.
+### Git & Version Control
+*   [Git](https://github.com/git/git) - Distributed version control system
+*   [LazyGit](https://github.com/jesseduffield/lazygit) - Simple terminal UI for git commands
+*   [Delta](https://github.com/dandavison/delta) - Syntax-highlighting pager for git
 
-*   **`.tmux.conf`**: Configuration for the tmux terminal multiplexer.
-    *   Sets `C-a` as the prefix key.
-    *   Defines keybindings for splitting panes, resizing, and navigating.
-    *   Enables mouse support.
-    *   Uses `tpm` (Tmux Plugin Manager) to manage plugins, including `vim-tmux-navigator`, `tmux-resurrect`, and `tmux-continuum`.
-
-*   **`scripts/update-alacritty-icon.sh`**: A shell script to replace the default Alacritty application icon with a custom one.
-
-*   **`.gitconfig`**: The global Git configuration file.
-    *   Sets the user's name and email.
-    *   Configures `delta` as the diff tool with a custom theme.
-
-*   **`.config/yabai/yabairc`**: Configuration for `yabai`, a tiling window manager for macOS.
-    *   Sets the default layout to `bsp`.
-    *   Configures window gaps and padding.
-    *   Enables mouse-follows-focus.
-
-*   **`.config/aerospace/aerospace.toml`**: Configuration for `AeroSpace`, an i3-like tiling window manager for macOS.
-    *   Defines keybindings for focus, window movement, and workspaces.
-    *   Sets window gaps and padding (consistent with `yabai`).
-    *   Configures floating rules for specific applications.
-
-*   **`.config/lazygit/config.yml`**: Configuration for `lazygit`, a terminal UI for Git.
-    *   Customizes the theme and layout.
-    *   Sets `delta` as the pager.
-    *   Enables auto-fetching and signing off on commits.
+### File Management
+*   [Yazi](https://github.com/sxyazi/yazi) - Blazing fast terminal file manager written in Rust
+*   [GNU Stow](https://www.gnu.org/software/stow/) - Symlink farm manager
 
 ## Usage
 
-These dotfiles are managed with GNU Stow. To use them, you would typically clone this repository to your home directory and then run `stow .` to create symbolic links from the files in this repository to their corresponding locations in your home directory.
+Clone this repository and use Stow to symlink configurations:
 
-For example, `stow` would create a symbolic link from `~/.dotfiles/.zshrc` to `~/.zshrc`.
+```bash
+git clone https://github.com/joyetgeorge/dotfiles.git
+cd dotfiles
+stow .
+```
