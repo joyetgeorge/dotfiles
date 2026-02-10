@@ -1,8 +1,6 @@
 # Dotfiles
 
-These are some of my config files I have for some of the tools I use daily
-
-## Tools & Configurations
+These are some of my config files I tweaked over the years 
 
 ### Shell & Environment
 *   [Zsh](https://github.com/zsh-users/zsh) - Shell
