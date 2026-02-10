@@ -1,12 +1,17 @@
 export ZSH="$HOME/.oh-my-zsh"
-export EDITOR=nvim  
+export EDITOR=nvim
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(starship init zsh)"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-fzf-history-search)
 
 source $ZSH/oh-my-zsh.sh
+
+# Use Homebrew Ruby/CocoaPods instead of RVM (must be after oh-my-zsh)
+export PATH="/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:$PATH"
 
 alias c="clear"
 alias vim="nvim"
@@ -15,6 +20,8 @@ alias gm="gemini"
 alias nn="nvim"
 alias lg="lazygit"
 alias zj="zellij"
+alias cl="claude"
+alias kick='NVIM_APPNAME=nvim-kickstart nvim'
 
 source $(brew --prefix nvm)/nvm.sh
 
@@ -166,8 +173,19 @@ znf() {
 
 fe() {
   local file
-  file=$(fzf --preview 'bat --style=numbers --color=always {}') || return
-  nvim "$file"
+  file=$(
+    eza --icons=always \
+        --color=always \
+        --git-ignore \
+        --oneline \
+    | awk '{ icon=$1; path=$NF; print icon "  " path }' \
+    | fzf --ansi \
+          --delimiter='  ' \
+          --with-nth=1,2 \
+          --nth=2 \
+          --preview '[[ -d {2} ]] && eza --icons=always --color=always {2} || bat --style=numbers --color=always {2}'
+  ) || return
+  nvim "$(echo "$file" | awk -F'  ' '{print $2}')"
 }
 
 export FZF_DEFAULT_OPTS='
@@ -211,6 +229,26 @@ eval "$(zoxide init zsh)"
 
 # opencode
 export PATH=/Users/joyetgeorge/.opencode/bin:$PATH
+
+# Ghostty scrollback search with fzf
+# Usage: Press Cmd+Shift+F to capture scrollback, then run `fs` to search
+fs() {
+  local file=$(pbpaste)
+  if [[ -f "$file" ]]; then
+    < "$file" fzf --tac --no-sort --exact \
+      --prompt="󰍉 Search: " \
+      --preview-window=hidden \
+      --bind 'enter:execute(echo {})+abort'
+  else
+    echo "No scrollback captured. Press Cmd+Shift+F first."
+  fi
+}
+
+# opencode
+export PATH=/Users/joyetgeorge/.opencode/bin:$PATH
+alias velocity="NVIM_APPNAME=VelocityNvim nvim"
+
+# Force block cursor after each prompt (fixes Starship overriding cursor shape)
 
 _fix_cursor() { echo -ne '\e[2 q' }
 precmd_functions+=(_fix_cursor)

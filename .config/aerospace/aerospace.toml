@@ -5,6 +5,20 @@ start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
+# Monitor workspace assignments
+# Workspaces 1-5 on main (MacBook), 6-9 on external display
+[workspace-to-monitor-force-assignment]
+1 = 2
+2 = 2
+3 = 2
+4 = 2
+5 = 2
+
+6 = 1
+7 = 1
+8 = 1
+9 = 1
+
 # Layout
 # 'accordion' or 'tiles'
 default-root-container-layout = 'tiles'
@@ -47,6 +61,11 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 
+# Secondary monitor shortcuts (Q, W, E for workspaces 6, 7, 8)
+alt-q = 'workspace 6'
+alt-w = 'workspace 7'
+alt-e = 'workspace 8'
+
 # Move window to workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
 alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
@@ -57,6 +76,11 @@ alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
 alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
 alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+
+# Move window to secondary monitor (Q, W, E)
+alt-shift-q = ['move-node-to-workspace 6', 'workspace 6']
+alt-shift-w = ['move-node-to-workspace 7', 'workspace 7']
+alt-shift-e = ['move-node-to-workspace 8', 'workspace 8']
 
 # Toggle floating
 alt-shift-space = 'layout floating tiling'
@@ -90,3 +114,7 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-name-regex-substring = '^Karabiner-Elements.*$'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = 'layout tiling'

@@ -1,15 +1,18 @@
 return {
   "nvim-tree/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeClose" },
+  keys = {
+    { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+  },
   opts = {
     view = {
-    side = "right",
-    width = 40,
-  },
+      side = "right",
+      width = 40,
+    },
     renderer = {
       icons = {
-        show = {
-          folder_arrow = false,
-        },
+        show = { folder_arrow = false },
         glyphs = {
           folder = {
             arrow_closed = "",

@@ -1,22 +1,60 @@
-require "nvchad.autocmds"
+-- Diagnostic highlight overrides — reapplied after every colorscheme change
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("DiagnosticHighlights", { clear = true }),
+  callback = function()
+    -- Virtual text
+    vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#ea6962" })
+    vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#d8a657" })
+    vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#7daea3" })
+    vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#a9b665" })
+    -- Underlines
+    vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#ea6962" })
+    vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#d8a657" })
+    vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "#7daea3" })
+    vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = "#a9b665" })
+  end,
+})
 
+-- Highlight on yank
+vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#18B06A", fg = "#000000" })
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.highlight.on_yank({ higroup = "YankHighlight", timeout = 200 })
+  end,
+})
+
+-- Restore cursor position on file open
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = vim.api.nvim_create_augroup("RestoreCursor", { clear = true }),
+  callback = function(args)
+    local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+    local lcount = vim.api.nvim_buf_line_count(args.buf)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
+
+-- Disable line numbers in terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("TerminalSettings", { clear = true }),
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
   end,
 })
 
 -- Large file performance optimizations
 local large_file_group = vim.api.nvim_create_augroup("LargeFileOptimizations", { clear = true })
-local large_file_size = 512 * 1024  -- 512 KB
+local large_file_size = 512 * 1024 -- 512 KB
 local large_file_lines = 10000
 
 vim.api.nvim_create_autocmd("BufReadPre", {
   group = large_file_group,
   callback = function(args)
-    local ok, stats = pcall(vim.loop.fs_stat, args.file)
+    local ok, stats = pcall(vim.uv.fs_stat, args.file)
     if ok and stats and stats.size > large_file_size then
       vim.b[args.buf].large_file = true
       vim.opt_local.swapfile = false
@@ -43,7 +81,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
       vim.opt_local.spell = false
       vim.opt_local.list = false
 
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+      local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
       if ok and stats and stats.size > (2 * 1024 * 1024) then
         vim.cmd("syntax clear")
         vim.opt_local.syntax = "off"
@@ -73,6 +111,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- Auto-quit when NvimTree is the last window
 vim.api.nvim_create_autocmd("QuitPre", {
+  group = vim.api.nvim_create_augroup("NvimTreeAutoQuit", { clear = true }),
   callback = function()
     local tree_wins = {}
     local floating_wins = {}

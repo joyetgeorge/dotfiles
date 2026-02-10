@@ -34,7 +34,11 @@ gui:
 git:
   autoFetch: true
   pagers:
-    - pager: delta --dark --paging=never --syntax-theme OneHalfDark -s --line-numbers --navigate --hyperlinks --file-style="bold yellow" --hunk-header-style="line-number syntax"
+    - pager: "delta --dark --paging=never --syntax-theme OneHalfDark -s --line-numbers --navigate --hyperlinks --file-style=\"bold yellow\" --hunk-header-style=\"line-number syntax\" --minus-style=\"syntax #3d0000\" --minus-emph-style=\"syntax #5f0000\" --plus-style=\"syntax #003d00\" --plus-emph-style=\"syntax #005f00\""
   commit:
     signOff: true
 promptToReturnFromSubprocess: false
+
+os:
+  edit: "nvim {{filename}}"
+  editAtLine: "nvim +{{line}} {{filename}}"

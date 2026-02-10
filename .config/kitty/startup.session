@@ -1,11 +1,32 @@
 # Kitty Startup Session
 
-# First tab (default)
-new_tab home
-cd ~
+# 1st tab (default)
+new_tab web
+cd ~/Developer/web-root/
 launch zsh
 
-# Second tab (Dotfiles)
-new_tab dotfiles
-cd ~/dotfiles
+# 2nd tab (Dotfiles)
+new_tab mobile
+cd ~/Developer/canyon-ranch-rn/
 launch zsh
+
+# 3rd tab (Dotfiles)
+new_tab api
+cd ~/Developer/api-graphql/
+launch zsh
+
+# 4th tab (Dotfiles)
+new_tab claude
+cd ~/Developer/
+launch zsh
+
+# 5th tab (Dotfiles)
+new_tab dotfiles
+cd ~/dotfiles/
+launch zsh
+
+# 6th tab (Dotfiles)
+new_tab fastly
+cd ~/Developer/func-fastly-cache-purge/
+launch zsh
+

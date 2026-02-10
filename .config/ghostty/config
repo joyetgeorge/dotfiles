@@ -55,3 +55,7 @@ keybind = super+r=reload_config
 
 # Option+Backspace to delete word
 keybind = alt+backspace=text:\x17
+
+# Scrollback search - copies scrollback file path to clipboard, then run `fs` to search
+keybind = cmd+shift+f=write_scrollback_file:copy
+

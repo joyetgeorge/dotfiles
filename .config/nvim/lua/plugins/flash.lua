@@ -3,20 +3,11 @@ return {
   event = "VeryLazy",
   opts = {
     labels = "asdfghjklqwertyuiopzxcvbnm",
-    search = {
-      multi_window = true,
-    },
-    jump = {
-      autojump = true,
-    },
+    search = { multi_window = true },
+    jump = { autojump = true },
     modes = {
-      char = {
-        enabled = true,
-        jump_labels = true,
-      },
-      search = {
-        enabled = true,
-      },
+      char = { enabled = false },
+      search = { enabled = true },
     },
   },
   keys = {
