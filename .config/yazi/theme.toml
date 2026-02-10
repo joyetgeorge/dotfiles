@@ -1,0 +1,42 @@
+# Yazi Theme - Dark Teal
+
+[mgr]
+border_symbol = "│"
+border_style = { fg = "#5f8787" }
+cwd = { fg = "#5f8787" }
+find_keyword = { fg = "#c9b98a", bold = true }
+find_position = { fg = "#5f8787", italic = true }
+marker_copied = { fg = "#5f8787", bg = "#5f8787" }
+marker_cut = { fg = "#c9645a", bg = "#c9645a" }
+marker_marked = { fg = "#c9b98a", bg = "#c9b98a" }
+marker_selected = { fg = "#5f8787", bg = "#5f8787" }
+count_copied = { fg = "#1a2c2e", bg = "#5f8787" }
+count_cut = { fg = "#1a2c2e", bg = "#c9645a" }
+count_selected = { fg = "#1a2c2e", bg = "#5f8787" }
+
+[indicator]
+parent = { fg = "#b0c4b0", bg = "#1a2c2e" }
+current = { fg = "#b0c4b0", bg = "#1a2c2e" }
+preview = { fg = "#b0c4b0", bg = "#1a2c2e" }
+padding = { open = "█", close = "█" }
+
+[status]
+overall = { fg = "#b0c4b0", bg = "#1a2c2e" }
+sep_left = { open = "█", close = "█" }
+sep_right = { open = "█", close = "█" }
+perm_type = { fg = "#5f8787" }
+perm_read = { fg = "#c9b98a" }
+perm_write = { fg = "#c9645a" }
+perm_exec = { fg = "#5f8787" }
+perm_sep = { fg = "#5f8787" }
+progress_label = { fg = "#b0c4b0", bold = true }
+progress_normal = { fg = "#5f8787", bg = "#1a2c2e" }
+progress_error = { fg = "#c9645a", bg = "#1a2c2e" }
+
+[mode]
+normal_main = { fg = "#1a2c2e", bg = "#5f8787", bold = true }
+normal_alt = { fg = "#5f8787", bg = "#1a2c2e" }
+select_main = { fg = "#1a2c2e", bg = "#c9b98a", bold = true }
+select_alt = { fg = "#c9b98a", bg = "#1a2c2e" }
+unset_main = { fg = "#1a2c2e", bg = "#c9645a", bold = true }
+unset_alt = { fg = "#c9645a", bg = "#1a2c2e" }

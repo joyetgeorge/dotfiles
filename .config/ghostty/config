@@ -1,0 +1,61 @@
+background = #121f1d
+window-colorspace = display-p3
+#foreground = ffffff
+# command=/opt/homebrew/bin/tmux
+
+theme = "Forest Blue"
+
+font-family = JetBrainsMono Nerd Font
+font-family-bold = JetBrainsMono Nerd Font Bold
+font-family-italic = JetBrainsMono Nerd Font Italic
+font-family-bold-italic = JetBrainsMono Nerd Font Bold Italic
+
+#font-family = OxProto Nerd Font
+#font-family-bold = OxProto Nerd Font Bold
+#font-family-italic = OxProto Nerd Font Italic
+#font-family-bold-italic = OxProto Nerd Font Bold Italic
+
+font-size = 14.2
+font-feature = -calt,-liga,-clig
+adjust-cell-height = 23%
+macos-titlebar-style = hidden
+macos-non-native-fullscreen = true
+macos-option-as-alt = true
+window-padding-x = 10
+window-padding-y = 10,3
+#command=/opt/homebrew/bin/tmux
+
+# keybindings
+keybind = cmd+s>r=reload_config
+keybind = cmd+s>x=close_surface
+
+# Navigate splits
+keybind = cmd+[=goto_split:previous
+keybind = cmd+]=goto_split:next
+keybind = cmd+shift+enter=toggle_split_zoom
+
+mouse-hide-while-typing = true
+cursor-style = block
+cursor-color = #18B06A
+custom-shader-animation = true
+custom-shader = ~/.config/ghostty/shaders/cursor_warp.glsl
+window-save-state = always
+
+copy-on-select = clipboard
+keybind = shift+enter=text:\x1b\r
+
+# Pane separator color
+split-divider-color = #6b9c7a
+unfocused-split-opacity = 0.3
+
+keybind = ctrl+a>n=next_tab
+keybind = ctrl+a>p=previous_tab
+
+keybind = super+r=reload_config
+
+# Option+Backspace to delete word
+keybind = alt+backspace=text:\x17
+
+# Scrollback search - copies scrollback file path to clipboard, then run `fs` to search
+keybind = cmd+shift+f=write_scrollback_file:copy
+

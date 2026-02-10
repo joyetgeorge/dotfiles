@@ -1,0 +1,27 @@
+#!/bin/bash
+# Open file in nvim in a new kitty pane, URLs in browser
+
+url="$1"
+
+# Open http/https URLs in default browser
+if [[ "$url" =~ ^https?:// ]]; then
+    open "$url"
+    exit 0
+fi
+
+file="$url"
+
+# Strip file:// prefix if present
+file="${file#file://}"
+
+# URL decode the path (handle %20 spaces, etc.)
+file=$(python3 -c "import urllib.parse, sys; print(urllib.parse.unquote(sys.argv[1]))" "$file")
+
+# Extract line number if present (format: file:line or file:line:col)
+if [[ "$file" =~ ^(.+):([0-9]+)(:[0-9]+)?$ ]]; then
+    filepath="${BASH_REMATCH[1]}"
+    line="${BASH_REMATCH[2]}"
+    kitty @ launch --location=vsplit --cwd=current nvim "+$line" "$filepath"
+else
+    kitty @ launch --location=vsplit --cwd=current nvim "$file"
+fi

@@ -1,9 +1,13 @@
 [user]
 	name = Joyet George
-	email = joyetgeorge@gamil.com
+	email = joyetgeorge@gmail.com
 
 [diff]
     tool = delta
+
+[delta]
+    dark = true
+    line-numbers = true
 
 [delta]
 	dark = true
