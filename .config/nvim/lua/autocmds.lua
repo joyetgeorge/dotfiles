@@ -132,3 +132,16 @@ vim.api.nvim_create_autocmd("QuitPre", {
     end
   end,
 })
+
+-- Open Oil when launching nvim with no arguments
+vim.api.nvim_create_autocmd("UIEnter", {
+  once = true,
+  callback = function()
+    vim.schedule(function()
+      if vim.fn.argc() == 0 then
+        require("oil").open()
+      end
+    end)
+  end,
+})
+

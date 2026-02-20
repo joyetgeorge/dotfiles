@@ -18,6 +18,8 @@ return {
           end
 
           map("gd", vim.lsp.buf.definition, "Go to definition")
+          map("gd\\", function() vim.cmd("vsplit") vim.lsp.buf.definition() end, "Definition in vertical split")
+          map("gd-", function() vim.cmd("split") vim.lsp.buf.definition() end, "Definition in horizontal split")
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
           map("gi", vim.lsp.buf.implementation, "Go to implementation")
           map("gr", vim.lsp.buf.references, "References")
@@ -41,6 +43,7 @@ return {
       local servers = {
         html = {},
         cssls = {},
+        somesass_ls = {},
         mdx_analyzer = {},
         graphql = {},
         jsonls = {},

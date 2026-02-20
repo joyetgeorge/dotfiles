@@ -26,8 +26,9 @@ return {
           },
         },
         lualine_c = {
+          { function() return vim.fn.fnamemodify(vim.fn.getcwd(), ":t") end, icon = "󰉋", color = { fg = "#61716E" } },
           { "filetype", icon_only = true, padding = { left = 1, right = 0 } },
-          { "filename", symbols = { modified = " ●", readonly = " 󰌾", unnamed = "[No Name]", newfile = " " } },
+          { "filename", symbols = { modified = " ●", readonly = " 󰌾", unnamed = "[No Name]", newfile = " " }, color = { fg = "#61716E" } },
         },
         lualine_x = {
           {

@@ -14,7 +14,23 @@ return {
       default = { "lsp", "path", "snippets", "buffer" },
     },
     completion = {
-      documentation = { auto_show = true },
+      menu = {
+        border = "none",
+        scrollbar = false,
+        draw = {
+          columns = {
+            { "kind_icon", gap = 1 },
+            { "label", "label_description", gap = 1 },
+            { "kind" },
+          },
+          treesitter = { "lsp" },
+        },
+      },
+      documentation = {
+        auto_show = true,
+        window = { border = "padded" },
+      },
+      ghost_text = { enabled = true },
     },
     signature = { enabled = true },
     snippets = { preset = "luasnip" },

@@ -9,16 +9,24 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
   },
   keys = {
-    { "<leader>ff", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Frecency (recent files)" },
+    { "<leader>ff", "<cmd>Telescope frecency<cr>", desc = "Frecency (recent files)" },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
     { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Search help" },
     { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Search keymaps" },
     { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Search by grep" },
+    { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "Search current word" },
     { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Search diagnostics" },
+    { "<leader>xx", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
+    { "<leader>xX", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Buffer diagnostics" },
+    { "<leader>xs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document symbols" },
+    { "<leader>xl", "<cmd>Telescope lsp_references<cr>", desc = "LSP references" },
+    { "<leader>xL", "<cmd>Telescope loclist<cr>", desc = "Location list" },
+    { "<leader>xQ", "<cmd>Telescope quickfix<cr>", desc = "Quickfix list" },
     { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Search resume" },
     { "<leader>s.", "<cmd>Telescope oldfiles<cr>", desc = "Search recent files" },
     { "<leader>//", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy find in buffer" },
+    { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
   },
   config = function()
     require("telescope").setup({
@@ -69,6 +77,11 @@ return {
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
+        },
+        frecency = {
+          show_filter_column = false,
+          default_workspace = "CWD",
+          db_safe_mode = false,
         },
       },
     })

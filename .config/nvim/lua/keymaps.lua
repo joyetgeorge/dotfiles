@@ -12,6 +12,12 @@ map("c", "<A-BS>", "<C-w>", { desc = "Delete word backward in command line" })
 -- Save
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
 
+-- Alternate buffer
+map("n", "<leader><leader>", "<C-^>", { desc = "Alternate buffer" })
+
+-- Close buffer
+map("n", "<leader>x", "<cmd>bd<cr>", { desc = "Close buffer" })
+
 -- Replace word under cursor
 map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word under cursor" })
 
@@ -55,6 +61,58 @@ map("n", "<leader>oF", function()
   local path = vim.fn.expand("%:p")
   vim.fn.system({ "open", "-R", path })
 end, { desc = "Reveal current file in Finder" })
+
+-- Toggle common values
+local function toggle_value()
+  local toggles = {
+    ["true"] = "false",
+    ["false"] = "true",
+    ["True"] = "False",
+    ["False"] = "True",
+    ["TRUE"] = "FALSE",
+    ["FALSE"] = "TRUE",
+    ["yes"] = "no",
+    ["no"] = "yes",
+    ["Yes"] = "No",
+    ["No"] = "Yes",
+    ["on"] = "off",
+    ["off"] = "on",
+    ["On"] = "Off",
+    ["Off"] = "On",
+    ["0"] = "1",
+    ["1"] = "0",
+    ["enable"] = "disable",
+    ["disable"] = "enable",
+    ["enabled"] = "disabled",
+    ["disabled"] = "enabled",
+  }
+
+  local word = vim.fn.expand("<cword>")
+  local new_word = toggles[word]
+
+  if new_word then
+    vim.cmd("normal! ciw" .. new_word)
+  else
+    -- Fallback to increment/decrement for numbers
+    local is_num = tonumber(word)
+    if is_num then
+      vim.cmd("normal! \x01") -- <C-a> increment
+    else
+      vim.notify("No toggle found for: " .. word, vim.log.levels.WARN)
+    end
+  end
+end
+
+map("n", "<leader>tt", toggle_value, { desc = "Toggle value (true/false, 0/1, etc.)" })
+
+-- LSP Diagnostics
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+map("n", "]e", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, { desc = "Next error" })
+map("n", "[e", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, { desc = "Previous error" })
+
+-- Format
+map("n", "<leader>fm", function() require("conform").format({ lsp_fallback = true }) end, { desc = "Format file" })
 
 -- Terminal
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "Exit terminal mode" })

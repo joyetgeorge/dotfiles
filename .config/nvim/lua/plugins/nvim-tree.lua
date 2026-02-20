@@ -3,14 +3,17 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeClose" },
   keys = {
-    { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+    { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle NvimTree" },
   },
   opts = {
     view = {
       side = "right",
       width = 40,
     },
+    hijack_cursor = true,
     renderer = {
+      root_folder_label = false,
+      highlight_opened_files = "name",
       icons = {
         show = { folder_arrow = false },
         glyphs = {

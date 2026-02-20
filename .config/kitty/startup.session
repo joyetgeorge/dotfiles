@@ -1,5 +1,5 @@
-new_tab home
-cd ~/
+new_tab dev
+cd ~/Developer/
 launch zsh
 
 new_tab dotfiles

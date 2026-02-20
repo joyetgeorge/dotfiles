@@ -252,3 +252,5 @@ alias velocity="NVIM_APPNAME=VelocityNvim nvim"
 
 _fix_cursor() { echo -ne '\e[2 q' }
 precmd_functions+=(_fix_cursor)
+
+export PATH="/opt/homebrew/bin:$PATH"

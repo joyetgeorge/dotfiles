@@ -6,7 +6,7 @@ o.mouse = "a"
 o.clipboard = "unnamedplus"
 o.showmode = false
 o.laststatus = 3
-o.cursorline = false
+o.cursorline = true
 
 -- Line numbers
 o.number = true
@@ -28,7 +28,7 @@ o.splitright = true
 
 -- Performance
 o.updatetime = 250
-o.timeoutlen = 400
+o.timeoutlen = 800
 o.redrawtime = 1500
 opt.synmaxcol = 300
 
@@ -49,7 +49,7 @@ o.foldlevelstart = 99
 o.foldenable = true
 o.foldcolumn = "0"
 o.fillchars = [[eob: ,fold: ,foldopen:▾,foldsep:│,foldclose:▸]]
-o.statuscolumn = '%s%=%l %{%foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "▾ " : "▸ ") : foldlevel(v:lnum) > 0 ? "│ " : "  "%}'
+o.statuscolumn = '%s%=%{%v:relnum == 0 ? "%#CursorLineNr#" : ""%}%l %{%v:relnum == 0 ? "%#CursorLineFold#" : "%#FoldColumn#"%}%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "▾ " : "▸ ") : foldlevel(v:lnum) > 0 ? "│ " : "  "}%*'
 
 -- Misc
 opt.shortmess:append("sI")
