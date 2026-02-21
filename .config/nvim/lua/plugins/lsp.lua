@@ -5,7 +5,14 @@ return {
       { "mason-org/mason.nvim", opts = {} },
       "mason-org/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      { "j-hui/fidget.nvim", opts = {} },
+      { "j-hui/fidget.nvim", opts = {
+        notification = {
+          window = {
+            normal_hl = "FidgetNormal",
+            winblend = 0,
+          },
+        },
+      } },
     },
     config = function()
       -- LspAttach keymaps

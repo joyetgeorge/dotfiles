@@ -11,7 +11,7 @@ vim.g.colors_name = "scaryforest"
 local c = {
   -- backgrounds (darkest → lightest)
   darker_black  = "#0d1917",
-  black         = "#0E1F1D",  -- main bg
+  black         = "#121f1d",  -- main bg
   black2        = "#182724",
   one_bg        = "#1d2b28",
   one_bg2       = "#243531",
@@ -28,7 +28,7 @@ local c = {
   light_grey    = "#5c7068",
 
   -- foregrounds
-  white         = "#dde5e0",  -- main fg
+  white         = "#dde5e0",
   light_white   = "#e8f0eb",
   bright_white  = "#ecf4ef",
 
@@ -71,14 +71,14 @@ local hi = function(group, opts)
 end
 
 -- Editor ──────────────────────────────────────────────────────────────────────
-hi("Normal",       { fg = c.white, bg = c.black })
-hi("NormalNC",     { fg = c.white, bg = c.black })
+hi("Normal",       { fg = c.white, bg = "NONE" })
+hi("NormalNC",     { fg = c.white, bg = "NONE" })
 hi("NormalFloat",  { fg = c.white, bg = c.darker_black })
 hi("FloatBorder",  { fg = c.grey, bg = c.darker_black })
 hi("FloatTitle",   { fg = c.white, bg = c.darker_black, bold = true })
-hi("SignColumn",   { bg = c.black })
-hi("EndOfBuffer",  { fg = c.black })
-hi("CursorLine",   { bg = c.one_bg })
+hi("SignColumn",   { bg = "NONE" })
+hi("EndOfBuffer",  { fg = c.black, bg = "NONE" })
+hi("CursorLine",   { bg = "#18221f" })
 hi("CursorColumn", { bg = c.one_bg })
 hi("ColorColumn",  { bg = c.one_bg })
 hi("Conceal",      { fg = c.grey })
@@ -91,10 +91,10 @@ hi("VisualNOS",    { bg = c.one_bg2 })
 -- Line numbers & columns
 hi("LineNr",       { fg = c.grey })
 hi("CursorLineNr", { fg = c.white })
-hi("FoldColumn",   { fg = c.grey, bg = c.black })
-hi("CursorLineFold", { fg = c.teal, bg = c.black })
+hi("FoldColumn",   { fg = c.grey, bg = "NONE" })
+hi("CursorLineFold", { fg = c.teal, bg = "NONE" })
 hi("Folded",       { fg = c.light_grey, bg = c.one_bg })
-hi("SignColumn",   { bg = c.black })
+hi("SignColumn",   { bg = "NONE" })
 
 -- Popup menu
 hi("Pmenu",        { fg = c.white, bg = c.statusline_bg })
@@ -103,13 +103,13 @@ hi("PmenuSbar",    { bg = c.one_bg })
 hi("PmenuThumb",   { bg = c.grey })
 
 -- Statusline & tabline
-hi("StatusLine",   { fg = c.white, bg = c.statusline_bg })
-hi("StatusLineNC", { fg = c.grey, bg = c.black })
+hi("StatusLine",   { fg = c.white, bg = "#0f1b19" })
+hi("StatusLineNC", { fg = c.grey, bg = "#0f1b19" })
 hi("TabLine",      { fg = c.grey, bg = c.statusline_bg })
 hi("TabLineFill",  { bg = c.darker_black })
 hi("TabLineSel",   { fg = c.white, bg = c.black })
-hi("WinBar",       { fg = c.white, bg = c.black })
-hi("WinBarNC",     { fg = c.grey, bg = c.black })
+hi("WinBar",       { fg = c.white, bg = "NONE" })
+hi("WinBarNC",     { fg = c.grey, bg = "NONE" })
 
 -- Splits & borders
 hi("VertSplit",    { fg = c.line })
@@ -124,7 +124,7 @@ hi("MatchParen",   { fg = c.white, bg = c.one_bg3, bold = true })
 
 -- Messages
 hi("ModeMsg",      { fg = c.green, bold = true })
-hi("MsgArea",      { fg = c.white })
+hi("MsgArea",      { fg = c.white, bg = "NONE" })
 hi("MoreMsg",      { fg = c.green })
 hi("ErrorMsg",     { fg = c.baby_pink })
 hi("WarningMsg",   { fg = c.yellow })
@@ -287,10 +287,10 @@ hi("DiagnosticUnderlineError",      { undercurl = true, sp = "#ea6962" })
 hi("DiagnosticUnderlineWarn",       { undercurl = true, sp = "#d8a657" })
 hi("DiagnosticUnderlineInfo",       { undercurl = true, sp = "#7daea3" })
 hi("DiagnosticUnderlineHint",       { undercurl = true, sp = "#a9b665" })
-hi("DiagnosticSignError",           { fg = "#ea6962", bg = c.black })
-hi("DiagnosticSignWarn",            { fg = "#d8a657", bg = c.black })
-hi("DiagnosticSignInfo",            { fg = "#7daea3", bg = c.black })
-hi("DiagnosticSignHint",            { fg = "#a9b665", bg = c.black })
+hi("DiagnosticSignError",           { fg = "#ea6962", bg = "NONE" })
+hi("DiagnosticSignWarn",            { fg = "#d8a657", bg = "NONE" })
+hi("DiagnosticSignInfo",            { fg = "#7daea3", bg = "NONE" })
+hi("DiagnosticSignHint",            { fg = "#a9b665", bg = "NONE" })
 
 -- LSP references
 hi("LspReferenceText",  { bg = c.one_bg2 })
@@ -314,9 +314,9 @@ hi("diffLine",     { fg = c.grey_fg })
 hi("diffIndexLine", { fg = c.purple })
 
 -- Git signs
-hi("GitSignsAdd",          { fg = c.green, bg = c.black })
-hi("GitSignsChange",       { fg = c.yellow, bg = c.black })
-hi("GitSignsDelete",       { fg = c.baby_pink, bg = c.black })
+hi("GitSignsAdd",          { fg = c.green, bg = "NONE" })
+hi("GitSignsChange",       { fg = c.yellow, bg = "NONE" })
+hi("GitSignsDelete",       { fg = c.baby_pink, bg = "NONE" })
 hi("GitSignsCurrentLineBlame", { fg = c.grey_fg })
 
 -- Telescope  ─────────────────────────────────────────
@@ -339,7 +339,7 @@ hi("TelescopeResultsDiffDelete", { fg = c.red })
 -- NvimTree ────────────────────────────────────────────────────────────────────
 hi("NvimTreeNormal",           { fg = c.white, bg = c.darker_black })
 hi("NvimTreeNormalNC",         { fg = c.white, bg = c.darker_black })
-hi("NvimTreeWinSeparator",     { fg = c.line, bg = c.black })
+hi("NvimTreeWinSeparator",     { fg = c.line, bg = "NONE" })
 hi("NvimTreeCursorLine",       { bg = c.black2 })
 hi("NvimTreeIndentMarker",     { fg = c.grey })
 hi("NvimTreeFolderIcon",       { fg = c.blue })
@@ -429,6 +429,11 @@ hi("TodoFgHACK", { fg = c.orange })
 hi("TodoFgWARN", { fg = c.yellow })
 hi("TodoFgNOTE", { fg = c.cyan })
 hi("TodoFgPERF", { fg = c.purple })
+
+-- Fidget (LSP progress)
+hi("FidgetTitle",  { fg = c.blue, bg = "NONE" })
+hi("FidgetTask",   { fg = c.grey_fg, bg = "NONE" })
+hi("FidgetNormal", { fg = c.white, bg = "NONE" })
 
 -- Terminal colors ─────────────────────────────────────────────────────────────
 vim.g.terminal_color_0  = c.black
