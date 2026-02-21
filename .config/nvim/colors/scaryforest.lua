@@ -11,7 +11,7 @@ vim.g.colors_name = "scaryforest"
 local c = {
   -- backgrounds (darkest → lightest)
   darker_black  = "#0d1917",
-  black         = "#121f1d",  -- main bg
+  black         = "#0E1F1D",  -- main bg
   black2        = "#182724",
   one_bg        = "#1d2b28",
   one_bg2       = "#243531",
