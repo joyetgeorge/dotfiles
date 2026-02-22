@@ -1,6 +1,10 @@
 # Start AeroSpace at login
 start-at-login = true
 
+after-startup-command = [
+  'exec-and-forget borders active_color=0xff3a4d47 inactive_color=0xff3a4d47 width=1.0 style=square whitelist="kitty"'
+]
+
 # Normalizations
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -118,3 +122,11 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.iphonesimulator'
 run = 'layout tiling'
+
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run= [
+  "layout floating",
+]
+
+
