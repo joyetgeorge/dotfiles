@@ -1,7 +1,7 @@
 background = #121f1d
 window-colorspace = display-p3
 #foreground = ffffff
-# command=/opt/homebrew/bin/tmux
+command = /opt/homebrew/bin/tmux
 
 theme = "Forest Blue"
 
@@ -23,8 +23,10 @@ macos-non-native-fullscreen = true
 macos-option-as-alt = true
 window-padding-x = 10
 window-padding-y = 10,3
-#command=/opt/homebrew/bin/tmux
 
+window-decoration = none 
+background-opacity = 0.85
+background-blur-radius = 60
 # keybindings
 keybind = cmd+s>r=reload_config
 keybind = cmd+s>x=close_surface

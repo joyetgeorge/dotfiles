@@ -34,6 +34,7 @@ opt.synmaxcol = 300
 
 -- Display
 o.termguicolors = true
+o.pumblend = 10
 o.signcolumn = "yes"
 o.wrap = false
 o.scrolloff = 8
