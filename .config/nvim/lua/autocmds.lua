@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 -- Highlight on yank
-vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#18B06A", fg = "#000000" })
+vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#18B06A", fg = "#000000", nocombine = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
   group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
