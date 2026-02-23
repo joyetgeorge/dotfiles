@@ -1,8 +1,9 @@
 gui:
-  showFileTree: false
+  showFileTree: true
   showRandomTip: false
   sidePanelWidth: 0.25
   border: "single"
+  showPanelJumps: false
   theme:
     lightTheme: false
     activeBorderColor:

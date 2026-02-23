@@ -6,7 +6,7 @@ o.mouse = "a"
 o.clipboard = "unnamedplus"
 o.showmode = false
 o.laststatus = 3
-o.cursorline = false
+o.cursorline = true
 
 -- Line numbers
 o.number = true
